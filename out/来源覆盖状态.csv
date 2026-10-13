@@ -1,0 +1,33 @@
+﻿region,url,http_status,downloaded,sha256,bytes,tables,candidate_rows,warning,snapshot_path
+北京,https://beijing.qianlong.com/2026/0701/8691077.shtml,200,True,91d57c459d86644ec56b3bf65a766abeae9e999d0ac1dc40e72fef49aaf38698,92914,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090511Z/3ced62d8b134.html
+天津,https://www.tj.gov.cn/sy/tzgg/202607/t20260702_7328783.html,200,True,ae81c25da02ef271e5d4701f00065593677584a97c0275fe1b2d1630cba23a72,144183,1,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090511Z/17153fab4d59.html
+河北,https://www.caheb.gov.cn/system/2018/02/09/011717832.shtml,200,True,82b1799af6b32543aee904034ae4512c37b70611029f763a739f3cc0137c8029,297375,4,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090511Z/58883947d7b1.html
+山西,https://www.casx.gov.cn/content/2021-12/20/content_10699740.htm,,False,,0,0,0,URLError: <urlopen error timed out>,
+内蒙古,https://www.nmgwx.gov.cn/publicNotice/18682.jhtml,,False,,0,0,0,URLError: <urlopen error [Errno 101] Network is unreachable>,
+辽宁,https://gsgg.nen.com.cn/network/gsgg/qwfb/2026/07/01/926843962776360567.shtml,,False,,0,0,0,HTTPError: HTTP Error 405: Not Allowed,
+吉林,https://news.cnjiwang.com/ggl/202606/4059749.html,200,True,1e7b26b030caa62ddb0425b2abed525742af6d76691d330c036329fd99a4d263,33527,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090511Z/3d036552556a.html
+黑龙江,https://www.hljnews.cn/ljxw/content/2021-09/26/content_562986.html,200,True,f59961d0fdb4d10dcca4324929e3926a3d4f4d35ce83125b036a34b600ee7db7,16920,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090511Z/cada01f4bfdb.html
+上海,https://nw.eastday.com/self/yw/20260706/0e1f65b415844a80ab8f71394f8d132c.html,,False,,0,0,0,HTTPError: HTTP Error 403: Forbidden,
+江苏,https://jsnews.jschina.com.cn/jsyw/202607/t20260702_s6a45c01fe4b0b98c2df2bfb1.shtml,200,True,60ed0acc358cfcf418ebe84d861244cfe4dd3a22b31f49b42f28f5be405b9824,29017,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090508Z/ef200e708ccb.html
+浙江,https://www.zjwx.gov.cn/col/col1228998798/art/2026/art_53694f91e019496ea8e77807c9c77e17.html,200,True,67a2c767957967a2e8e7d715f6865fa730536e6ddc76983647db8a4c49653e8b,19255,2,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090508Z/6f7a84fe87b1.html
+安徽,https://www.ahwx.gov.cn/gzzc/bbdt/202604/t20260402_9193257.html,,False,,0,0,0,URLError: <urlopen error timed out>,
+福建,https://fjnews.fjsen.com/2026-06/30/content_32210435.htm,200,True,5504844bc528a194aa76e96bff1341a806317c9398359f0f03c6e096dc9e8b4a,13231,1,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090508Z/fe928c7cd73c.html
+江西,https://mp.weixin.qq.com/s/Mmex98gM7cXrbvyZ33Cc8A,200,True,25b42c99c6096e641b6e7e27a7b2b83ebeae27f484a3ea32edf97bbd7a65d3bd,18164,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090508Z/14115bad1119.html
+山东,https://sd.dzwww.com/sdnews/202607/t20260702_17896272.htm,200,True,989c16ec5d64202dd05f1186f0520199863553975094b2b9045d50aeadf555a6,46030,1,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090508Z/30ecc54c1c24.html
+河南,https://www.hnwx.gov.cn/2026/04-22/75428.html,,False,,0,0,0,HTTPError: HTTP Error 403: Forbidden,
+湖北,https://news.cnhubei.com/content/2026-03/31/content_19896860.html,200,False,,0,0,0,ValueError: Non-HTTPS redirect; manual review,
+湖南,https://moment.rednet.cn/pc/nograb/646048/94/15815220.html,200,True,da554555a47524ac480e41495d9088919fad6c5c02fa4bd2b6246e8ea19f1336,21757,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090505Z/b7fe4d72efac.html
+广东,https://mp.weixin.qq.com/s/BxWrndulINP8RHOk_0iAFA,200,True,6ff8f733eb66cdd52c8b7d7169b083416860c73659a0c47c598352796b64873f,18165,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090505Z/ecc8d615be56.html
+广西,,,False,,0,0,0,MISSING_OFFICIAL_SOURCE_URL: manual source discovery required,
+海南,https://www.hainan.gov.cn/hainan/0101/202603/6054fe06323d4a44b4efac91ec0e9d15.shtml,,False,,0,0,0,URLError: <urlopen error [Errno 101] Network is unreachable>,
+重庆,https://www.cqnews.net/web/content_1523735262943801344.html,200,True,0eebe0b43e75c72bd267fd503aa47585e7e3229a78c1ec27b94d958b69677969,79655,3,51,,runs/20261012T090505Z/c2a64490ef22.html
+四川,https://sichuan.scol.com.cn/ggxw/202604/83238788.html,200,True,6ea8bfda157e7636beebff3e1319670d9432aec67f125bb0933483ef13e18283,9036,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090505Z/d21c61fa571f.html
+贵州,https://movement.gzstv.com/news/detail/H2K4KW/?st=wnyrgzwIbud450n,200,True,87870364dd05b269c4f7968ae727725ea9dab65973fcf9170dba9945a2567b44,105030,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090505Z/24de7aed5fae.html
+云南,https://mp.weixin.qq.com/s/joj8huoDJlcCbhuh1Z8z0Q,200,True,f7048c4621ff810720dac61140b22da81d118eddee113b8392026076f782ee46,18164,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090509Z/d0ce8dabc46c.html
+西藏,https://www.xzxw.com/xw/xzyw/2026-10/09/content_6963544.html,200,True,0c171415f08ecd0470b8fcb6c9f443531d28ca7a3709c375be7f25c70219889e,144251,3,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090509Z/01c0a216bd76.html
+陕西,https://www.sxdaily.com.cn/2025-12/31/content_11475517.html,,False,,0,0,0,URLError: <urlopen error timed out>,
+甘肃,https://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,200,True,0f99b97f9e7e59fa06cbc21e28d3d03ef30e135ae27c05e0d4b913e9abe770a5,17170,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090509Z/69ae3c85f371.html
+青海,https://www.qhnews.com/index/system/2026/04/09/030540314.shtml,200,False,,0,0,0,ValueError: Non-HTTPS redirect; manual review,
+宁夏,https://www.nxnews.net/sz/qwfb/202604/t20260408_1466617.html,,False,,0,0,0,HTTPError: HTTP Error 405: Not Allowed,
+新疆,https://www.xinjiang.gov.cn/xinjiang/tzgg/202607/df4546eb75cd4fd4883644c4c6e6f52e.shtml,200,True,a6d55f637c9e2b3b861109e9dfd0506c813f907693c81cc8c741ab102b0d5699,75173,2,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090509Z/a0e9ae2e8a41.html
+新疆生产建设兵团,https://www.xjbt.gov.cn/c/2026-03-26/8476760.shtml,200,True,0e0b927d6a7e4185a655d14e5e30c8073a402bade6bc640b5fe293c94248bc0a,40370,0,0,"No strict candidates; check images, PDFs, iframe, or table format",runs/20261012T090509Z/fb5d9abbb53d.html

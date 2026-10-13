@@ -1,0 +1,5 @@
+{
+  "status": "not_completed",
+  "reason": "No usable local browser runtime; cloud browser cannot access workspace localhost.",
+  "remote_deployment": "not_performed"
+}

@@ -1,0 +1,11 @@
+全国网页证据深挖（不改变原网站和400条基线）
+
+1. 将 tools/deep_source_assets.py 和 .github/workflows/deep-source-assets.yml 按原目录复制到现有 GitHub 仓库；其余文件不用上传。
+2. GitHub Desktop 中 Commit to main → Push origin。
+3. GitHub Actions 选择 Nationwide evidence asset inventory (manual) → Run workflow。
+4. 下载 nationwide-evidence-assets 报告。
+
+这一步专门处理已有20个网页快照里没有被普通表格解析的地区，筛选可能的图片/附件/嵌入页面线索，不请求新网页、不调用 OCR、不新增或审批媒体记录。
+实验验证：从真实原始网页快照中找到489个资源线索（其中大量为网站装饰图片），不能把线索数量当作媒体数量，必须进一步筛选并取得相关原件。
+
+特别说明：依赖 GitHub 之前成功的全国采集工作流 nationwide-extract.yml 的 artifact；当前无须修改其他工作流。

@@ -1,0 +1,2 @@
+﻿region,url,http_status,downloaded,sha256,bytes,tables,candidate_rows,warning,snapshot_path
+LOCAL_TEST,file:///mnt/data/china-media-github-actions-pilot/fixture_not_official.html,local,True,1c1b7c146a1980c760f5fb092030d79a014b1e7282cbe21893bd10bd53408e86,344,1,1,"Local parsing validation only, not official-source acquisition",/mnt/data/china-media-github-actions-pilot/fixture_not_official.html

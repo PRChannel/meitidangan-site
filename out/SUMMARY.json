@@ -1,0 +1,18 @@
+{
+  "baseline_records": 400,
+  "candidate_rows": 179,
+  "source_index_entries": 32,
+  "match_status": {
+    "名称证号域名一致": 158,
+    "域名字段冲突": 2,
+    "名称证号匹配_域名无法比较": 19
+  },
+  "pending_additions": 0,
+  "conflicts": 2,
+  "records_added_to_public_site": 0,
+  "notes": [
+    "这是候选与现有基线的字段对比，不是独立人工核验",
+    "基线来源版本不同，不能据此推断许可当前有效",
+    "任何新增或变更都必须经人工确认后才可发布"
+  ]
+}

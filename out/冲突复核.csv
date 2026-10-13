@@ -1,0 +1,3 @@
+﻿region,service_name,license_number,candidate_domains,evidence_file,source_type,baseline_ids,baseline_domains,finding,review_required
+江苏,名城苏州网,32120170006,www.2500sz.comwww.sz2500.comwww.2500sz.netwww.sz2500.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-006,www.2500sz.com；www.sz2500.com；www.2500sz.net；www.sz2500.net,域名字段冲突,是
+江苏,宜兴网,32120200007,www.tdcm.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-038,www.cnyixing.cn,域名字段冲突,是

@@ -1,0 +1,40 @@
+name: Nationwide evidence asset inventory (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install HTML parser
+        run: python -m pip install beautifulsoup4
+      - name: Download prior national artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RUN_ID=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow nationwide-extract.yml --limit 30 --json databaseId,conclusion --jq '[.[] | select(.conclusion=="success")][0].databaseId')
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name nationwide-media-extraction-review --dir prior-artifact
+          test -f prior-artifact/32地区来源状态.csv
+          python - <<'PY'
+          import zipfile,pathlib
+          root=pathlib.Path('prior-artifact')
+          with zipfile.ZipFile('prior-artifact.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
+              for f in root.rglob('*'):
+                  if f.is_file():z.write(f,f.relative_to(root))
+          PY
+      - name: Analyze all saved HTML evidence
+        run: python tools/deep_source_assets.py --artifact prior-artifact.zip --sources data/sources_32.json --output deep_source_report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nationwide-evidence-assets
+          path: deep_source_report/
+          if-no-files-found: warn

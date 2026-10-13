@@ -1,0 +1,20 @@
+[
+  {
+    "table_index": 0,
+    "row_index": 1,
+    "raw_cells": [
+      "1",
+      "样例新闻网站（仅测试）",
+      "www.sample-example.org",
+      "13120170001"
+    ],
+    "license_candidates": [
+      "13120170001"
+    ],
+    "domain_candidates": [
+      "www.sample-example.org"
+    ],
+    "region": "LOCAL_TEST",
+    "verified": false
+  }
+]

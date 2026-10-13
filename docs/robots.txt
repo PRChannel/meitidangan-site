@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://meitidangan.com/sitemap.xml

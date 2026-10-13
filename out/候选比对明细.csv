@@ -1,0 +1,180 @@
+﻿region,service_name,license_number,candidate_domains,evidence_file,source_type,baseline_ids,baseline_domains,finding,review_required
+重庆,华龙网,50120170001,www.cqnews.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-001,www.cqnews.net,名称证号域名一致,是
+重庆,视界网,50120170002,www.cbg.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-002,www.cbg.cn,名称证号域名一致,是
+重庆,重庆日报网,50120180001,www.cqrb.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-003,www.cqrb.cn,名称证号域名一致,是
+重庆,上游新闻网,50120180002,www.cqcb.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-004,www.cqcb.cn,名称证号域名一致,是
+重庆,城乡统筹发展网,50120180006,www.zgcxtc.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-005,www.zgcxtc.cn,名称证号域名一致,是
+重庆,七一网,50120180007,www.12371.gov.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-006,www.12371.gov.cn,名称证号域名一致,是
+重庆,重庆商报网,50120190001,www.chinacqsb.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-007,www.chinacqsb.com,名称证号域名一致,是
+重庆,今日重庆网,50120190002,www.jrcq.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-008,www.jrcq.cn,名称证号域名一致,是
+重庆,重青网,50120190003,www.cqqnb.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-009,www.cqqnb.net,名称证号域名一致,是
+重庆,轨客网,50120200002,www.cqdsrb.com.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-010,www.cqdsrb.com.cn,名称证号域名一致,是
+重庆,渝中新闻网,50120200003,www.cqyznews.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-011,www.cqyznews.com,名称证号域名一致,是
+重庆,巴南网,50120200004,www.bn.cq.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-012,www.bn.cq.cn,名称证号域名一致,是
+重庆,重庆綦江网,50120200005,www.cqqjnews.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-013,www.cqqjnews.cn,名称证号域名一致,是
+重庆,潼南网,50120200006,www.cqtn.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-014,www.cqtn.com,名称证号域名一致,是
+重庆,万盛新闻网,50120200007,cqwsnews.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-015,cqwsnews.net,名称证号域名一致,是
+重庆,南岸网,50120210001,cqna.com.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-016,cqna.com.cn,名称证号域名一致,是
+重庆,三峡传媒网,50120210002,www.sxcm.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-017,www.sxcm.net,名称证号域名一致,是
+重庆,大渡口网,50120210003,www.ddknews.gov.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-018,www.ddknews.gov.cn,名称证号域名一致,是
+重庆,沙坪坝新闻网,50120210005,www.spbnews.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-019,www.spbnews.cn,名称证号域名一致,是
+重庆,长寿新闻网,50120210007,www.ccs.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-020,www.ccs.cn,名称证号域名一致,是
+重庆,江津网,50120210008,www.cqjjnet.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-021,www.cqjjnet.com,名称证号域名一致,是
+重庆,大足网,50120210009,www.txdzw.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-022,www.txdzw.com,名称证号域名一致,是
+重庆,铜梁网,50120210010,www.cqtl.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-023,www.cqtl.cn,名称证号域名一致,是
+重庆,开州之窗,50120210011,www.kxzc.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-024,www.kxzc.cn,名称证号域名一致,是
+重庆,全搜九龙坡网,50120210012,www.cqjlp.com.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-025,www.cqjlp.com.cn,名称证号域名一致,是
+重庆,北碚新闻网,50120210013,www.beibeinews.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-026,www.beibeinews.com,名称证号域名一致,是
+重庆,璧山网,50120210014,www.bswxw.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-027,www.bswxw.com,名称证号域名一致,是
+重庆,荣昌新闻网,50120210015,www.cqrc.org.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-028,www.cqrc.org.cn,名称证号域名一致,是
+重庆,武隆网,50120210016,www.cqwulong.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-029,www.cqwulong.cn,名称证号域名一致,是
+重庆,垫江新闻网,50120210017,www.cqdj.gov.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-030,www.cqdj.gov.cn,名称证号域名一致,是
+重庆,今日合川网,50120210018,www.jrhcw.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-031,www.jrhcw.com,名称证号域名一致,是
+重庆,永川网,50120210019,www.ycw.gov.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-032,www.ycw.gov.cn,名称证号域名一致,是
+重庆,武陵传媒网,50120210020,www.wldsb.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-033,www.wldsb.com,名称证号域名一致,是
+重庆,涪陵网,50120210021,www.fulingwx.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-034,www.fulingwx.cn,名称证号域名一致,是
+重庆,南川网,50120210022,www.cqncnews.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-035,www.cqncnews.com,名称证号域名一致,是
+重庆,梁平网,50120210023,www.cqlprm.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-036,www.cqlprm.cn,名称证号域名一致,是
+重庆,城口新闻网,50120210024,www.ckxw.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-037,www.ckxw.net,名称证号域名一致,是
+重庆,丰都新闻网,50120210025,www.gcfd.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-038,www.gcfd.cn,名称证号域名一致,是
+重庆,忠州新闻网,50120210026,www.zzxw.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-039,www.zzxw.net,名称证号域名一致,是
+重庆,云阳网,50120210027,www.yunyangwang.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-040,www.yunyangwang.com,名称证号域名一致,是
+重庆,奉节网,50120210028,www.xfjw.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-041,www.xfjw.net,名称证号域名一致,是
+重庆,巫山网,50120210029,www.xfjw.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-042,www.xfjw.net,名称证号域名一致,是
+重庆,巫溪门户网,50120210030,www.xfjw.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-043,www.xfjw.net,名称证号域名一致,是
+重庆,秀山网,50120210032,www.zgcqxs.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-044,www.zgcqxs.net,名称证号域名一致,是
+重庆,酉阳新闻网,50120210033,www.yyxww.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-045,www.yyxww.net,名称证号域名一致,是
+重庆,重庆彭水网,50120210034,www.cqps.gov.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-046,www.cqps.gov.cn,名称证号域名一致,是
+重庆,重庆法治在线,50120220001,www.cqfzb.net,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-047,www.cqfzb.net,名称证号域名一致,是
+重庆,电脑报,50120220002,www.icpcw.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-048,www.icpcw.com,名称证号域名一致,是
+重庆,重庆科技创新网,50120220005,cqkjcx.com,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-049,cqkjcx.com,名称证号域名一致,是
+重庆,重庆与世界杂志,50120250001,www.cqworld.cn,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-050,www.cqworld.cn,名称证号域名一致,是
+重庆,iChongqing,50120250002,www.ichongqing.info,fasttrack-sources-16.zip,HTML网站表,CN-CQ-202606-WEB-051,www.ichongqing.info,名称证号域名一致,是
+江苏,中国江苏网,32120170001,www.jschina.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-001,www.jschina.com.cn,名称证号域名一致,是
+江苏,新华报业网（交汇点新闻网）,32120170002,www.xhby.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-002,www.xhby.net,名称证号域名一致,是
+江苏,荔枝网,32120170003,www.jstv.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-003,www.jstv.com,名称证号域名一致,是
+江苏,扬子晚报网,32120170004,www.yangtse.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-004,www.yangtse.com,名称证号域名一致,是
+江苏,龙虎网,32120170005,www.longhoo.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-005,www.longhoo.net,名称证号域名一致,是
+江苏,名城苏州网,32120170006,www.2500sz.comwww.sz2500.comwww.2500sz.netwww.sz2500.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-006,www.2500sz.com；www.sz2500.com；www.2500sz.net；www.sz2500.net,域名字段冲突,是
+江苏,无锡新传媒,32120170007,www.wxrb.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-007,www.wxrb.com,名称证号域名一致,是
+江苏,扬州网,32120170008,www.yznews.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-008,www.yznews.com.cn,名称证号域名一致,是
+江苏,金山网,32120170009,www.jsw.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-009,www.jsw.com.cn,名称证号域名一致,是
+江苏,苏州新闻网,32120170010,www.subaonet.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-010,www.subaonet.com,名称证号域名一致,是
+江苏,中国常州网,32120250002,www.cz001.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-011,www.cz001.com.cn,名称证号域名一致,是
+江苏,中国徐州网,32120170012,www.cnxz.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-012,www.cnxz.com.cn,名称证号域名一致,是
+江苏,群众网,32120180001,www.qunzh.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-013,www.qunzh.com,名称证号域名一致,是
+江苏,现代快报网,32120180002,www.xdkb.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-014,www.xdkb.net,名称证号域名一致,是
+江苏,南报网,32120180003,www.njdaily.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-015,www.njdaily.cn,名称证号域名一致,是
+江苏,南京广播电视网,32120180004,www.nbs.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-016,www.nbs.cn,名称证号域名一致,是
+江苏,南京广播网,32120180004,www.njgb.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-017,www.njgb.com,名称证号域名一致,是
+江苏,盐城新闻网,32120180006,www.ycnews.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-018,www.ycnews.cn,名称证号域名一致,是
+江苏,盐城网,32120180007,www.0515yc.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-019,www.0515yc.cn,名称证号域名一致,是
+江苏,扬帆网,32120180008,www.96189.tv,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-020,www.96189.tv,名称证号域名一致,是
+江苏,泰州新闻网,32120180010,www.tznews.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-021,www.tznews.cn,名称证号域名一致,是
+江苏,淮海网,32120180011,www.huaihai.tv,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-022,www.huaihai.tv,名称证号域名一致,是
+江苏,镇江传媒网,32120180012,www.zjmc.tv,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-023,www.zjmc.tv,名称证号域名一致,是
+江苏,南通网,32120180013,www.zgnt.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-024,www.zgnt.net,名称证号域名一致,是
+江苏,江海明珠网,32120180014,www.ntjoy.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-025,www.ntjoy.com,名称证号域名一致,是
+江苏,凤城泰州网,32120180015,www.tz2100.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-026,www.tz2100.com,名称证号域名一致,是
+江苏,淮安新闻网,32120180016,www.ha101.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-027,www.ha101.cn,名称证号域名一致,是
+江苏,淮安视听网,32120180017,www.habctv.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-028,www.habctv.com,名称证号域名一致,是
+江苏,连网,32120180018,www.lyg01.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-029,www.lyg01.net,名称证号域名一致,是
+江苏,连云港传媒网,32120180019,www.lyg1.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-030,www.lyg1.com,名称证号域名一致,是
+江苏,宿迁网,32120180020,www.sq1996.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-031,www.sq1996.com,名称证号域名一致,是
+江苏,我苏网,32120170003,www.ourjiangsu.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-032,www.ourjiangsu.com,名称证号域名一致,是
+江苏,南京晨报网,32120180005,www.injcb.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-033,www.injcb.com,名称证号域名一致,是
+江苏,太湖明珠网,32120180021,www.thmz.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-034,www.thmz.com,名称证号域名一致,是
+江苏,第一昆山网,32120200003,www.ksrmtzx.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-035,www.ksrmtzx.com,名称证号域名一致,是
+江苏,张家港在线,32120200005,www.zjgonline.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-036,www.zjgonline.com.cn,名称证号域名一致,是
+江苏,江阴网,32120200006,www.cnjsjy.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-037,www.cnjsjy.cn,名称证号域名一致,是
+江苏,宜兴网,32120200007,www.tdcm.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-038,www.cnyixing.cn,域名字段冲突,是
+江苏,句广网,32120200009,www.jrntv.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-039,www.jrntv.com,名称证号域名一致,是
+江苏,扬中新闻网,32120200010,www.yzxw.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-040,www.yzxw.com,名称证号域名一致,是
+江苏,今日高邮,32120200011,www.gytoday.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-041,www.gytoday.cn,名称证号域名一致,是
+江苏,泰兴网,32120200013,www.taixing.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-042,www.taixing.cn,名称证号域名一致,是
+江苏,如东新媒体,32120200014,www.rdxmt.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-043,www.rdxmt.com,名称证号域名一致,是
+江苏,海安日报网,32120200015,www.haribao.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-044,www.haribao.cn,名称证号域名一致,是
+江苏,南通州网,32120200018,wwww.southtz.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-045,wwww.southtz.com,名称证号域名一致,是
+江苏,东台报业网,32120200019,www.dtxww.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-046,www.dtxww.com,名称证号域名一致,是
+江苏,射阳新闻网,32120200020,www.sheyangnews.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-047,www.sheyangnews.com,名称证号域名一致,是
+江苏,洪泽新闻网,32120200024,www.hzxw.net.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-048,www.hzxw.net.cn,名称证号域名一致,是
+江苏,邳州新闻网,32120200027,www.pznews.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-049,www.pznews.com,名称证号域名一致,是
+江苏,新沂融媒,32120200029,www.xysrmt.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-050,www.xysrmt.cn,名称证号域名一致,是
+江苏,睢宁新闻网,32120200030,www.jrsncn.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-051,www.jrsncn.com,名称证号域名一致,是
+江苏,赣榆新闻网,32120200031,www.gyxw.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-052,www.gyxw.com,名称证号域名一致,是
+江苏,高淳发布,32120210001,www.jsgctv.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-053,www.jsgctv.com,名称证号域名一致,是
+江苏,溧水融媒网,32120210002,www.lsrmw.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-054,www.lsrmw.cn,名称证号域名一致,是
+江苏,常熟新闻网,32120210004,www.csxww.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-055,www.csxww.com,名称证号域名一致,是
+江苏,太仓新闻网,32120210005,www.taicangdaily.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-056,www.taicangdaily.com,名称证号域名一致,是
+江苏,武进新闻网,32120210007,www.wj001.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-057,www.wj001.com,名称证号域名一致,是
+江苏,金坛网,32120210008,www.jintanwang.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-058,www.jintanwang.com,名称证号域名一致,是
+江苏,丹阳新闻网,32120210009,www.dy001.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-059,www.dy001.cn,名称证号域名一致,是
+江苏,靖江网,32120210031,www.jsjjw.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-060,www.jsjjw.cn,名称证号域名一致,是
+江苏,姜堰新闻网,32120210015,www.jyxww.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-061,www.jyxww.com.cn,名称证号域名一致,是
+江苏,海门之窗,32120210016,www.jshmzc.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-062,www.jshmzc.com,名称证号域名一致,是
+江苏,黄海在线网,32120210018,www.zghhzx.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-063,www.zghhzx.net,名称证号域名一致,是
+江苏,建湖新闻网,32120210019,www.jianhunews.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-064,www.jianhunews.com,名称证号域名一致,是
+江苏,涟水新闻网,32120210022,www.lsxw.net.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-065,www.lsxw.net.cn,名称证号域名一致,是
+江苏,江南时报网,32120220001,www.jntimes.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-066,www.jntimes.cn,名称证号域名一致,是
+江苏,江苏经济网,32120220003,www.jseconomy.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-067,www.jseconomy.com,名称证号域名一致,是
+江苏,启东新闻网,32120200016,www.qidongnews.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-068,www.qidongnews.com,名称证号域名一致,是
+江苏,沛县新闻网,32120200028,www.jspxxw.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-069,www.jspxxw.com,名称证号域名一致,是
+江苏,吴江新闻网,32120200004,www.wjdaily.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-070,www.wjdaily.com,名称证号域名一致,是
+江苏,乡村干部报网,32120230001,www.xcgbb.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-071,www.xcgbb.com,名称证号域名一致,是
+江苏,兴化新闻网,32120210014,www.xinghuanews.net,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-072,www.xinghuanews.net,名称证号域名一致,是
+江苏,现代Plus,32120180002,www.xdplus.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-073,www.xdplus.cn,名称证号域名一致,是
+江苏,江苏法治网,32120220002,www.jslegal.com,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-074,www.jslegal.com,名称证号域名一致,是
+江苏,江苏反诈网,32120170002,www.js96110.com.cn,fasttrack-attachment-review.zip / evidence_attachments/jiangsu.docx,DOCX网站表,CN-JS-202603-WEB-075,www.js96110.com.cn,名称证号域名一致,是
+河北,长城网,13120240001,www.hebccw.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-001,www.hebccw.cn,名称证号域名一致,是
+河北,河北经济网,13120170001,www.hbjjrb.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-002,www.hbjjrb.com,名称证号域名一致,是
+河北,河北新闻网,13120170002,www.hebnews.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-003,www.hebnews.cn,名称证号域名一致,是
+河北,环渤海新闻网,13120170003,www.huanbohainews.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-004,www.huanbohainews.com.cn,名称证号域名一致,是
+河北,环京津新闻网,13120170004,www.010lf.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-005,www.010lf.com,名称证号域名一致,是
+河北,石家庄新闻网,13120170005,www.sjzdaily.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-006,www.sjzdaily.com.cn,名称证号域名一致,是
+河北,河北共产党员网,13120170007,www.hebgcdy.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-007,www.hebgcdy.com,名称证号域名一致,是
+河北,张家口新闻网,13120170008,www.zjknews.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-008,www.zjknews.com,名称证号域名一致,是
+河北,承德新闻网,13120170009,www.chengdenews.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-009,www.chengdenews.cn,名称证号域名一致,是
+河北,秦皇岛新闻网,13120170010,www.qhdnews.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-010,www.qhdnews.com,名称证号域名一致,是
+河北,衡水新闻网,13120170011,www.hsrb.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-011,www.hsrb.com.cn,名称证号域名一致,是
+河北,邢台网,13120260002,www.xtrb.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-012,www.xtrb.cn,名称证号域名一致,是
+河北,邯郸新闻网,13120240003,www.handannews.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-013,www.handannews.com.cn,名称证号域名一致,是
+河北,河北网络广播电视台,13120180001,www.hebtv.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-014,www.hebtv.com,名称证号域名一致,是
+河北,河青新闻网,13120180002,www.hbynet.net,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-015,www.hbynet.net,名称证号域名一致,是
+河北,河北法治网,13120180003,www.hbfzb.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-016,www.hbfzb.com,名称证号域名一致,是
+河北,河工新闻网,13120180004,www.hbgrb.net,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-017,www.hbgrb.net,名称证号域名一致,是
+河北,河北文明网,13120180007,hb.wenming.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-018,hb.wenming.cn,名称证号域名一致,是
+河北,石家庄网络广播电视台（石家庄广电网）,13120180008,www.sjzntv.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-019,www.sjzntv.cn,名称证号域名一致,是
+河北,张家口网络广播电视台,13120180009,www.zjkgdcs.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-020,www.zjkgdcs.com,名称证号域名一致,是
+河北,和合承德网,13120180010,www.hehechengde.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-021,www.hehechengde.cn,名称证号域名一致,是
+河北,唐山广电网,13120180012,www.tsr.he.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-022,www.tsr.he.cn,名称证号域名一致,是
+河北,廊坊传媒网,13120180013,www.lfcmw.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-023,www.lfcmw.com,名称证号域名一致,是
+河北,全保定网,13120250001,www.bdall.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-024,www.bdall.com,名称证号域名一致,是
+河北,今日渤海网,13120180017,www.bohaitoday.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-025,www.bohaitoday.com,名称证号域名一致,是
+河北,沧州广电网,13120180018,www.czgd.tv,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-026,www.czgd.tv,名称证号域名一致,是
+河北,衡水传媒网,13120180020,www.hscmw.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-027,www.hscmw.cn,名称证号域名一致,是
+河北,邢台网,13120180021,xttv.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-028,xttv.com.cn,名称证号域名一致,是
+河北,中原新闻网,13120240003,www.zysbs.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-029,www.zysbs.cn,名称证号域名一致,是
+河北,保定新闻网,13120250001,www.bdxwnet.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-030,www.bdxwnet.cn,名称证号域名一致,是
+河北,定州新闻网,13120210006,www.dingzhoudaily.com www.dzxww.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-031,www.dingzhoudaily.com；www.dzxww.cn,名称证号域名一致,是
+河北,河北画报,13120220006,www.hebpic.com,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-032,www.hebpic.com,名称证号域名一致,是
+河北,太行新闻网,13120240002,www.thxww.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-033,www.thxww.com.cn,名称证号域名一致,是
+河北,辛集新闻网,13120240002,www.xjxww.com.cn,fasttrack-sources-0.zip,HTML网站表（页面表序2）,CN-HEBEI-202607-WEB-034,www.xjxww.com.cn,名称证号域名一致,是
+西藏,中国西藏新闻网,54120170001,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-001,,名称证号匹配_域名无法比较,是
+西藏,中国西藏之声网,54120210001,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-002,,名称证号匹配_域名无法比较,是
+西藏,快搜西藏网,54120180002,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-003,,名称证号匹配_域名无法比较,是
+西藏,日喀则新闻网,54120230001,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-004,,名称证号匹配_域名无法比较,是
+西藏,吉隆县政府新闻网,54120230012,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-005,,名称证号匹配_域名无法比较,是
+西藏,南木林县政府新闻网,54120230013,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-006,,名称证号匹配_域名无法比较,是
+西藏,朗县政府新闻网,54120230024,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-007,,名称证号匹配_域名无法比较,是
+西藏,西藏那曲新闻网,54120230027,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-008,,名称证号匹配_域名无法比较,是
+西藏,比如县政府新闻网,54120230031,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-009,,名称证号匹配_域名无法比较,是
+西藏,曲松县政府新闻网,54120230040,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-010,,名称证号匹配_域名无法比较,是
+西藏,措美县政府新闻网,54120230042,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-011,,名称证号匹配_域名无法比较,是
+西藏,加查县政府新闻网,54120230044,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-012,,名称证号匹配_域名无法比较,是
+西藏,隆子县政府新闻网,54120230045,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-013,,名称证号匹配_域名无法比较,是
+西藏,桑日县政府新闻网,54120230047,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-014,,名称证号匹配_域名无法比较,是
+西藏,贡嘎县政府新闻网,54120230050,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-015,,名称证号匹配_域名无法比较,是
+西藏,拉萨广播电视网,54120230051,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-016,,名称证号匹配_域名无法比较,是
+西藏,昌都报,54120230060,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-017,,名称证号匹配_域名无法比较,是
+西藏,中国西藏林芝网,54120240001,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-018,,名称证号匹配_域名无法比较,是
+西藏,山南网,54120250002,,fasttrack-sources-24.zip,HTML网站表（页面表序1）,CN-XZ-20260930-WEBSITE-019,,名称证号匹配_域名无法比较,是

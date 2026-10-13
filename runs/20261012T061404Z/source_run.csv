@@ -1,0 +1,4 @@
+﻿region,url,http_status,downloaded,sha256,bytes,tables,candidate_rows,warning,snapshot_path
+河北,https://www.caheb.gov.cn/system/2018/02/09/011717832.shtml,,False,,0,0,0,Offline mode: no network attempted,
+江苏,https://jsnews.jschina.com.cn/jsyw/202607/t20260702_s6a45c01fe4b0b98c2df2bfb1.shtml,,False,,0,0,0,Offline mode: no network attempted,
+重庆,https://www.cqnews.net/web/content_1523735262943801344.html,,False,,0,0,0,Offline mode: no network attempted,
