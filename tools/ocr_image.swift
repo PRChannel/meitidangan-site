@@ -1,11 +1,24 @@
 // macOS 本地 OCR：用 Vision 框架识别中文图片文本。
 // 编译：swiftc -O tools/ocr_image.swift -o /tmp/ocr
-// 用法：/tmp/ocr <图片路径> [--tile 3000] [--box]
+// 用法：/tmp/ocr <图片路径> [--tile 3000] [--box] [--crop x,y,w,h] [--scale 2]
 //   超长竖图会按 --tile 高度切片识别后顺序拼接，避免单次请求过大。
 //   --box 输出「文本<TAB>x<TAB>y<TAB>w<TAB>h」，坐标为像素、原点左上，供表格重建使用。
+//   --crop 只识别指定矩形（原点左上），输出坐标仍为整图坐标。
+//   --scale 识别前放大倍数，小字表格放大后更准。
 import Foundation
 import Vision
 import AppKit
+
+func scaleImage(_ cg: CGImage, _ factor: CGFloat) -> CGImage {
+    if factor == 1 { return cg }
+    let w = Int(CGFloat(cg.width) * factor), h = Int(CGFloat(cg.height) * factor)
+    guard let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: 0,
+                              space: CGColorSpaceCreateDeviceRGB(),
+                              bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return cg }
+    ctx.interpolationQuality = .high
+    ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
+    return ctx.makeImage() ?? cg
+}
 
 func ocr(_ cg: CGImage, withBox: Bool) -> [(String, CGRect)] {
     let req = VNRecognizeTextRequest()
@@ -38,17 +51,34 @@ guard args.count >= 2 else {
 let path = args[1]
 var tile = 3000
 if let i = args.firstIndex(of: "--tile"), i + 1 < args.count, let v = Int(args[i + 1]) { tile = v }
+var scale: CGFloat = 1
+if let i = args.firstIndex(of: "--scale"), i + 1 < args.count, let v = Double(args[i + 1]) { scale = CGFloat(v) }
+var cropRect: CGRect? = nil
+if let i = args.firstIndex(of: "--crop"), i + 1 < args.count {
+    let p = args[i + 1].split(separator: ",").compactMap { Int($0) }
+    if p.count == 4 { cropRect = CGRect(x: p[0], y: p[1], width: p[2], height: p[3]) }
+}
 let withBox = args.contains("--box")
 
 guard let img = NSImage(contentsOfFile: path),
-      let cg = img.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+      var cg = img.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
     FileHandle.standardError.write("无法读取图片: \(path)\n".data(using: .utf8)!)
     exit(1)
 }
 
+var originX: CGFloat = 0, originY: CGFloat = 0
+if let r = cropRect, let sub = cg.cropping(to: r) {
+    cg = sub
+    originX = r.minX
+    originY = r.minY
+}
+if scale != 1 { cg = scaleImage(cg, scale) }
+
 func emit(_ line: String, _ rect: CGRect, _ yOffset: CGFloat) {
+    let x = rect.minX / scale + originX
+    let y = (rect.minY + yOffset) / scale + originY
     if withBox {
-        print("\(line)\t\(Int(rect.minX))\t\(Int(rect.minY + yOffset))\t\(Int(rect.width))\t\(Int(rect.height))")
+        print("\(line)\t\(Int(x))\t\(Int(y))\t\(Int(rect.width / scale))\t\(Int(rect.height / scale))")
     } else {
         print(line)
     }

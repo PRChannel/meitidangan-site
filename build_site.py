@@ -49,11 +49,28 @@ def footer(route):
 def write(route,title,desc,body,active='',schema=None):
  f=OUT/route/'index.html';f.parent.mkdir(parents=True,exist_ok=True)
  f.write_text(head(title,desc,route,schema,active)+body+footer(route),encoding='utf-8');pages.append(route)
+def ev_meta(r):
+ """证据级别与说明文案：必须按记录实际采集方式区分，不得混用。"""
+ m=r.get('evidence_method')
+ if m=='pdf_text_extraction_sequential_check':
+  return ('PDF原件文本提取已校验','本记录来自国家网信办公布的PDF名单，已用程序校验条数与名单标注一致、序号连续、许可证号格式与登记地址完整，并保留原PDF的SHA256。PDF版面的逐行目视复核尚未完成。')
+ if m=='ocr_image_recognition_domain_http_checked':
+  return ('图片名单OCR提取+域名核验','本记录来自省级网信办公布的图片版名单，经本地OCR识别与表格重建，并用网站首页标题核验域名归属。图片分辨率有限，个别用字可能存在误差；如发现错误，请通过纠错渠道反馈。')
+ return ('对应版本原件已核对','本记录的网站名称、登记地址及许可证号已与对应版本原件核对，保留原记录编号。')
+def ev_short(r):
+ return ev_meta(r)[0]
+def ev_method_text(r):
+ m=r.get('evidence_method')
+ if m=='pdf_text_extraction_sequential_check':
+  return 'PDF原件文本提取，条数与序号连续性已程序校验'
+ if m=='ocr_image_recognition_domain_http_checked':
+  return '图片名单OCR识别与表格重建，域名经网站首页标题核验'
+ return '原表页面逐条核对'
 def pagehead(title,desc,kicker='PUBLIC RECORDS',route=''):
  p=root_prefix(route)
  return f'<section class="pagehead"><div class="crumb"><a href="{p or "./"}">首页</a> / {esc(title)}</div><div class="kicker">{esc(kicker)}</div><h1>{esc(title)}</h1><p>{esc(desc)}</p></section>'
 def row(r,p=''):
- return f'''<tr data-region="{esc(r['region'])}" data-search="{esc(' '.join([r['name'],r['region'],r['license_number'],r['registered_addresses_raw'],r['operator_name'] or '']))}"><td><a href="{p}media/{slug(r)}/">{esc(r['name'])}</a><small>{esc(r['region'])} · {'PDF文本已校验' if r.get('evidence_method') else '已核对对应版本'}</small></td><td><code>{esc(r['registered_addresses_raw']).replace(chr(10),'<br>')}</code></td><td><code>{r['license_number']}</code></td><td>{esc(r['list_as_of'])}</td><td><a class="text-link" href="{p}media/{slug(r)}/">查看记录</a></td></tr>'''
+ return f'''<tr data-region="{esc(r['region'])}" data-search="{esc(' '.join([r['name'],r['region'],r['license_number'],r['registered_addresses_raw'],r['operator_name'] or '']))}"><td><a href="{p}media/{slug(r)}/">{esc(r['name'])}</a><small>{esc(r['region'])} · {esc(ev_short(r))}</small></td><td><code>{esc(r['registered_addresses_raw']).replace(chr(10),'<br>')}</code></td><td><code>{r['license_number']}</code></td><td>{esc(r['list_as_of'])}</td><td><a class="text-link" href="{p}media/{slug(r)}/">查看记录</a></td></tr>'''
 def table(rs,p=''):
  return '<div class="tablebox"><table><thead><tr><th scope="col">网站服务名称</th><th scope="col">登记地址原文</th><th scope="col">许可证编号</th><th scope="col">名单统计截至</th><th scope="col">证据与详情</th></tr></thead><tbody>'+''.join(row(r,p) for r in rs)+'</tbody></table></div>'
 dataset={'@context':'https://schema.org','@type':'Dataset','name':'中国媒体身份资料库 已核对版本网站服务记录','description':f'{N}条经对应版本官方原件核对的网站服务记录（省级{N_LOCAL}条、中央新闻单位{N_CENTRAL}条），当前许可有效性未单独确认；原件缺口保留。','url':DOMAIN+'/','dateModified':DATE,'creator':{'@type':'Organization','name':'荆门暗猫网络科技有限公司'},'distribution':{'@type':'DataDownload','contentUrl':DOMAIN+'/data/records.json','encodingFormat':'application/json'}}
@@ -71,11 +88,8 @@ for r in records:
  route='media/'+slug(r)+'/'
  detail=pagehead(r['name'],f"{r['region']}网站服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'MEDIA RECORD',route)
  # 证据级别必须如实区分：省级为原件页面逐条核对，中央为PDF文本提取+程序校验
- if r.get('evidence_method'):
-  ev_label='PDF原件文本提取已校验';ev_text='本记录来自国家网信办公布的PDF名单，已用程序校验条数与名单标注一致、序号连续、许可证号格式与登记地址完整，并保留原PDF的SHA256。PDF版面的逐行目视复核尚未完成。'
- else:
-  ev_label='对应版本原件已核对';ev_text='本记录的网站名称、登记地址及许可证号已与对应版本原件核对，保留原记录编号。'
- fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式','PDF原件文本提取，条数与序号连续性已程序校验' if r.get('evidence_method') else '原表页面逐条核对'),('记录编号',r['record_id'])]
+ ev_label,ev_text=ev_meta(r)
+ fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
  fields_html=''.join(f'<div class="field"><dt>{esc(k)}</dt><dd>{esc(v).replace(chr(10),"<br>")}</dd></div>' for k,v in fields)
  date_note=''
  if r['source_published_at'] and r['source_published_at'][:4]!=r['list_as_of'][:4]:date_note='<p class="note">原来源页面显示的发布日期早于名单更新年份，本页分别照录两项日期，不据旧页面日期判定名单版本。</p>'

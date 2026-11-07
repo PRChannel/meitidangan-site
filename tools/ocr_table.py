@@ -36,109 +36,150 @@ def load(path):
     return boxes
 
 
+HEADER_WORDS = [
+    "序号", "单位名称", "网站名称", "名称", "许可证编号", "许可证号", "许可编号",
+    "单位性质", "服务类别", "服务形式", "域名", "网址", "属地", "所在地",
+]
+
+
 def guess_columns(boxes):
-    """通用表头检测：顶部区域里块数最多的同一水平层视为表头行。"""
+    """按表头关键词识别表头行：同一水平层里含 ≥3 个表头词的视为表头。"""
     if not boxes:
         return None
-    top = [b for b in boxes if b[2] < 150]
-    if len(top) < 3:
+    cand = [b for b in boxes if b[2] < 400 and len(b[0].strip()) <= 12]
+    if len(cand) < 3:
         return None
-    # 按 y 聚类（±14px），取块数最多的一层
-    top.sort(key=lambda b: b[2])
+    cand.sort(key=lambda b: b[2])
     clusters = []
-    for b in top:
-        if clusters and abs(b[2] - clusters[-1][0][2]) <= 14:
+    for b in cand:
+        if clusters and abs(b[2] - clusters[-1][0][2]) <= 18:
             clusters[-1].append(b)
         else:
             clusters.append([b])
-    header = max(clusters, key=len)
-    if len(header) < 3:
+
+    best, best_hits = None, 0
+    for c in clusters:
+        hits = sum(1 for b in c if any(w in b[0] for w in HEADER_WORDS))
+        if hits > best_hits:
+            best, best_hits = c, hits
+    if best is None or best_hits < 3:
         return None
-    header.sort(key=lambda b: b[1] + b[3] / 2)
-    names = [b[0].strip() for b in header]
-    names = [n for n in names if n and len(n) <= 12]
-    if len(names) < 3:
-        return None
-    centers = [b[1] + b[3] / 2 for b in header[: len(names)]]
+
+    best.sort(key=lambda b: b[1] + b[3] / 2)
+    names = [b[0].strip() for b in best]
+    centers = [b[1] + b[3] / 2 for b in best]
     bounds = [int((a + b) / 2) for a, b in zip(centers, centers[1:])]
     return names, bounds
 
 
-def rebuild(boxes, colnames, bounds, seq_expected=None):
-    licenses = [(t, x, y) for t, x, y, w, h in boxes if LICENSE_RE.match(t.strip())]
+NATURE_WORDS = [
+    "事业单位法人", "企业法人", "其他法人", "社会团体法人",
+    "民办非企业单位", "企业非法人", "机关法人", "群众团体",
+]
+
+
+def split_merged(boxes):
+    """Vision 会把相邻两格的文字合并成一个块（如「XX中心 事业单位法人」）。
+    这里按已知的「单位性质」枚举词把这类块拆成两块，右块按字符宽度推算出 x。"""
+    out = []
+    for t, x, y, w, h in boxes:
+        hit = None
+        for nw in NATURE_WORDS:
+            i = t.find(nw)
+            if i > 0:
+                hit = (i, nw)
+                break
+        if not hit:
+            out.append((t, x, y, w, h))
+            continue
+        i, nw = hit
+        cw = w / max(len(t), 1)
+        left, right = t[:i].strip(), t[i:]
+        if left:
+            out.append((left, x, y, int(cw * i), h))
+        out.append((right, int(x + cw * i), y, int(cw * (len(t) - i)), h))
+    return out
+
+
+def dedupe(boxes, y_tol=26):
+    """去掉切片重叠造成的重复识别：同样文本、x 接近、y 相差小于行距一半的块只留一个。"""
+    kept = []
+    for b in sorted(boxes, key=lambda z: (z[2], z[1])):
+        t, x, y, w, h = b
+        dup = False
+        for k in reversed(kept[-40:]):
+            if k[0] == t and abs(k[1] - x) < 8 and abs(k[2] - y) < y_tol:
+                dup = True
+                break
+        if not dup:
+            kept.append(b)
+    return kept
+
+
+def rebuild(boxes, colnames, bounds):
+    """以 11 位许可证号为行锚点：每个文本块就近归到某一个锚点行，再按 x 归列。"""
+    licenses = [b for b in boxes if LICENSE_RE.match(b[0].strip())]
     if not licenses:
         return [], {}
 
-    # 证号在绝大多数名单里靠右且 x 稳定，取众数 x 作为该列定位参考
-    xs = [x for _, x, _ in licenses]
+    # 证号列定位：取 x 中位数，剔除明显偏左的误识别
+    xs = [x + w / 2 for _, x, _, w, _ in licenses]
     lic_x = statistics.median(xs)
-    anchors = sorted(y for _, x, y in licenses if abs(x - lic_x) < 60)
+    anchors = sorted({
+        round(b[2] + b[4] / 2)
+        for b in licenses
+        if abs(b[1] + b[3] / 2 - lic_x) < 60
+    })
     if len(anchors) < 3:
-        anchors = sorted(y for _, _, y in licenses)
+        anchors = sorted({round(b[2] + b[4] / 2) for b in licenses})
 
-    diffs = [b - a for a, b in zip(anchors, anchors[1:]) if 15 < b - a < 120]
-    pitch = statistics.median(diffs) if diffs else 35.0
-
-    # 用锚点建立完整行网格：以第一个锚点为基准，向前后按 pitch 扩展
-    base = anchors[0]
-    grid = []
-    # 向上扩展（首行可能没有证号）
-    k = 1
-    while base - k * pitch > 100:
-        grid.append(base - k * pitch)
-        k += 1
-    grid = sorted(grid)
-    for a in anchors:
-        grid.append(a)
-    # 向下扩展
-    k = 1
-    last = anchors[-1]
-    ymax = max(y for _, _, y, _, _ in boxes)
-    while last + k * pitch < ymax:
-        grid.append(last + k * pitch)
-        k += 1
-    grid = sorted(set(round(g, 1) for g in grid))
-
-    # 合并过近的网格行（重叠切片可能重复识别）
+    # 合并相邻过近的锚点（同一行被识别出两个证号块）
     merged = []
-    for g in grid:
-        if not merged or g - merged[-1] > pitch * 0.5:
-            merged.append(g)
-    grid = merged
+    for a in anchors:
+        if not merged or a - merged[-1] > 20:
+            merged.append(a)
+    anchors = merged
 
-    rows = [dict() for _ in grid]
+    diffs = [b - a for a, b in zip(anchors, anchors[1:]) if 20 < b - a < 200]
+    pitch = statistics.median(diffs) if diffs else 40.0
+
+    rows = [dict() for _ in anchors]
     for t, x, y, w, h in boxes:
         t = t.strip()
         if not t:
             continue
-        # 跳过表头块
         if any(t == n or (len(t) < 12 and t in n) for n in colnames):
             continue
-        # 跳过整页标题、注释行
         if len(t) > 45 or t.startswith("（截至") or "许可情况统计表" in t or "获得互联网新闻信息" in t:
             continue
-        xc = x + w / 2  # 用块中心判断所属列，长文本起点偏左也不影响
+        xc = x + w / 2
         ci = 0
         for i, b in enumerate(bounds):
             if xc >= b:
                 ci = i + 1
         if ci >= len(colnames):
             ci = len(colnames) - 1
-        # 找最近的网格行
-        best, bestd = None, 1e9
         ym = y + h / 2
-        for ri, gy in enumerate(grid):
-            d = abs(ym - gy)
-            if d < bestd:
-                best, bestd = ri, d
-        if best is None or bestd > pitch * 0.8:
+        ri, rd = None, 1e9
+        for i, a in enumerate(anchors):
+            d = abs(ym - a)
+            if d < rd:
+                ri, rd = i, d
+        if ri is None or rd > pitch * 0.95:
             continue
         col = colnames[ci]
-        cur = rows[best].get(col, "")
-        rows[best][col] = (cur + t) if cur else t
+        rows[ri].setdefault(col, []).append((ym, x, t))
 
-    meta = {"pitch": pitch, "rows": len(grid), "license_anchors": len(anchors)}
-    return rows, meta
+    out = []
+    for r in rows:
+        fixed = {}
+        for col, frags in r.items():
+            frags.sort(key=lambda z: (z[0], z[1]))
+            fixed[col] = "".join(f[2] for f in frags)
+        out.append(fixed)
+
+    meta = {"pitch": pitch, "rows": len(anchors), "license_anchors": len(anchors)}
+    return out, meta
 
 
 UNICODE_DIGITS = str.maketrans("０１２３４５６７８９", "0123456789")
@@ -154,6 +195,10 @@ def main():
     boxes = load(args.box)
     if not boxes:
         sys.exit("无有效 OCR 数据")
+    raw_n = len(boxes)
+    boxes = dedupe(boxes)
+    boxes = split_merged(boxes)
+    print(f"OCR 块: {raw_n} → 去重/拆格后 {len(boxes)}", file=sys.stderr)
 
     colnames = args.cols.split(",")
     guess = guess_columns(boxes)
