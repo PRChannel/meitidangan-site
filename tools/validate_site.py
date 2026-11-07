@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
-import json, re, xml.etree.ElementTree as ET
+import json, re, html, xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]; DOCS=ROOT/'docs'
 class Page(HTMLParser):
@@ -42,18 +42,21 @@ for f in paths:
   link_count+=1
  for ld in p.ld:assert ld.get('@context')=='https://schema.org'
 assert not broken,broken[:20]
-record_pages=list((DOCS/'media').glob('*/index.html'))+list((DOCS/'units').glob('*/index.html'))
+def esc(v):return html.escape(str(v or ''),quote=True)
+record_pages=list((DOCS/'media').glob('*/index.html'))+list((DOCS/'units').glob('*/index.html'))+list((DOCS/'services').glob('*/index.html'))
 assert len(record_pages)==len(records),(len(record_pages),len(records))
 for x in records:
- sub='units' if x.get('record_kind')=='entity' else 'media'
+ sub={'entity':'units','service':'services'}.get(x.get('record_kind'),'media')
  f=DOCS/sub/x['record_id'].lower()/'index.html';s=f.read_text()
  assert x['license_number'] in s and x['list_as_of'] in s and x['evidence_sha256'] in s
  assert '当前许可' in s
  if x.get('record_kind')=='entity':
-  assert x['name'] in s and not x['registered_domains']
+  assert esc(x['name']) in s and not x['registered_domains']
+ if x.get('record_kind')=='service':
+  assert esc(x['name']) in s and not x['registered_domains'] and esc(x['service_form']) in s
 sitemap=ET.parse(DOCS/'sitemap.xml');urls=[x.text for x in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
 assert len(urls)==len(paths)-1 and len(set(urls))==len(urls)
 assert '404.html' not in '\n'.join(urls)
 coverage=json.loads((DOCS/'data/coverage.json').read_text());assert len(coverage)>=31
-report={'html_pages_checked':len(paths),'public_record_pages':len(record_pages),'internal_links_checked':link_count,'broken_internal_links':0,'unique_titles':len(titles),'sitemap_urls':len(urls),'regions':len(coverage),'public_records':len(records),'held_records_in_public_data':0,'site_records':len([x for x in records if x.get('record_kind')!='entity']),'entity_records':len([x for x in records if x.get('record_kind')=='entity'])}
+report={'html_pages_checked':len(paths),'public_record_pages':len(record_pages),'internal_links_checked':link_count,'broken_internal_links':0,'unique_titles':len(titles),'sitemap_urls':len(urls),'regions':len(coverage),'public_records':len(records),'held_records_in_public_data':0,'site_records':len([x for x in records if x.get('record_kind','website')=='website']),'entity_records':len([x for x in records if x.get('record_kind')=='entity']),'service_form_records':len([x for x in records if x.get('record_kind')=='service'])}
 (ROOT/'VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False))
