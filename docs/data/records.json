@@ -28269,6 +28269,94 @@
    "issuing_authority": "安徽省互联网信息办公室",
    "review_status": "verified_dated_official_record",
    "current_license_validity": "not_independently_confirmed"
+  },
+  {
+   "record_id": "CN-HN-202603-WEB-035",
+   "name": "中原经济网",
+   "region": "河南",
+   "license_number": "41120200004",
+   "registered_addresses_raw": "www.zyjjw.cn",
+   "registered_domains": [
+    "www.zyjjw.cn"
+   ],
+   "operator_name": "河南经济报社",
+   "service_type": "互联网站",
+   "source_url": "https://www.hnwx.gov.cn/2026/04-22/75428.html",
+   "source_published_at": "2026-04-22",
+   "list_as_of": "2026-03-31",
+   "verified_at": "2026-11-07",
+   "evidence_id": "EHN-WEB-20260331",
+   "evidence_sha256": "2fc679a1655b1553a52dfdeb552c5e30352a315d9d40dde4eb96a615a9341adb",
+   "evidence_method": "ocr_image_recognition_domain_http_checked",
+   "issuing_authority": "河南省互联网信息办公室",
+   "review_status": "verified_dated_official_record",
+   "current_license_validity": "not_independently_confirmed"
+  },
+  {
+   "record_id": "CN-HN-202603-WEB-037",
+   "name": "范县网",
+   "region": "河南",
+   "license_number": "41120200053",
+   "registered_addresses_raw": "www.fanxianw.com",
+   "registered_domains": [
+    "www.fanxianw.com"
+   ],
+   "operator_name": "范县融媒体中心",
+   "service_type": "互联网站",
+   "source_url": "https://www.hnwx.gov.cn/2026/04-22/75428.html",
+   "source_published_at": "2026-04-22",
+   "list_as_of": "2026-03-31",
+   "verified_at": "2026-11-07",
+   "evidence_id": "EHN-WEB-20260331",
+   "evidence_sha256": "2fc679a1655b1553a52dfdeb552c5e30352a315d9d40dde4eb96a615a9341adb",
+   "evidence_method": "ocr_image_recognition_address_print_confirmed",
+   "issuing_authority": "河南省互联网信息办公室",
+   "review_status": "verified_dated_official_record",
+   "current_license_validity": "not_independently_confirmed"
+  },
+  {
+   "record_id": "CN-HN-202603-WEB-041",
+   "name": "焦作广播电视网",
+   "region": "河南",
+   "license_number": "41120210017",
+   "registered_addresses_raw": "www.jzrt.com",
+   "registered_domains": [
+    "www.jzrt.com"
+   ],
+   "operator_name": "焦作广播电视台",
+   "service_type": "互联网站",
+   "source_url": "https://www.hnwx.gov.cn/2026/04-22/75428.html",
+   "source_published_at": "2026-04-22",
+   "list_as_of": "2026-03-31",
+   "verified_at": "2026-11-07",
+   "evidence_id": "EHN-WEB-20260331",
+   "evidence_sha256": "2fc679a1655b1553a52dfdeb552c5e30352a315d9d40dde4eb96a615a9341adb",
+   "evidence_method": "ocr_image_recognition_domain_http_checked",
+   "issuing_authority": "河南省互联网信息办公室",
+   "review_status": "verified_dated_official_record",
+   "current_license_validity": "not_independently_confirmed"
+  },
+  {
+   "record_id": "CN-HN-202603-WEB-042",
+   "name": "河南工人日报社网",
+   "region": "河南",
+   "license_number": "41120220005",
+   "registered_addresses_raw": "www.hngrrb.cn",
+   "registered_domains": [
+    "www.hngrrb.cn"
+   ],
+   "operator_name": "河南工人日报社",
+   "service_type": "互联网站",
+   "source_url": "https://www.hnwx.gov.cn/2026/04-22/75428.html",
+   "source_published_at": "2026-04-22",
+   "list_as_of": "2026-03-31",
+   "verified_at": "2026-11-07",
+   "evidence_id": "EHN-WEB-20260331",
+   "evidence_sha256": "2fc679a1655b1553a52dfdeb552c5e30352a315d9d40dde4eb96a615a9341adb",
+   "evidence_method": "ocr_image_recognition_domain_http_checked",
+   "issuing_authority": "河南省互联网信息办公室",
+   "review_status": "verified_dated_official_record",
+   "current_license_validity": "not_independently_confirmed"
   }
  ],
  "central_records": 221
