@@ -58,6 +58,8 @@ def ev_meta(r):
   return ('图片名单OCR提取+域名核验','本记录来自省级网信办公布的图片版名单，经本地OCR识别与表格重建，并用网站首页标题核验域名归属。图片分辨率有限，个别用字可能存在误差；如发现错误，请通过纠错渠道反馈。')
  if m=='ocr_image_recognition_address_print_confirmed':
   return ('图片名单OCR提取+地址复读','本记录来自省级网信办公布的图片版名单，登记地址经原图放大复读确认与原名单一致；该网站当前改版或暂不可访问，未能做首页标题核验。如发现错误，请通过纠错渠道反馈。')
+ if m=='official_attachment_text_extraction':
+  return ('官方附件表格文本提取','本记录来自省级网信办公告附件中的电子表格（xls/xlsx），以文本方式直接提取、未经OCR，登记信息与原件零转写差异；已用程序校验条数与名单标注一致。个别登记域名当前可能已改版或暂停解析，不代表登记信息有误。如发现错误，请通过纠错渠道反馈。')
  return ('对应版本原件已核对','本记录的网站名称、登记地址及许可证号已与对应版本原件核对，保留原记录编号。')
 def ev_short(r):
  return ev_meta(r)[0]
@@ -69,6 +71,8 @@ def ev_method_text(r):
   return '图片名单OCR识别与表格重建，域名经网站首页标题核验'
  if m=='ocr_image_recognition_address_print_confirmed':
   return '图片名单OCR识别与表格重建，登记地址经原图放大复读确认'
+ if m=='official_attachment_text_extraction':
+  return '官方公告附件电子表格文本直接提取，条数已程序校验'
  return '原表页面逐条核对'
 def pagehead(title,desc,kicker='PUBLIC RECORDS',route=''):
  p=root_prefix(route)
