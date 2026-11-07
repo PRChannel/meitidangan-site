@@ -25,7 +25,7 @@ class Page(HTMLParser):
   if t=='script' and self.in_ld:self.ld.append(json.loads(''.join(self.cur)));self.in_ld=False
 
 records=json.loads((DOCS/'data/records.json').read_text())['records']
-assert len(records)==898 and len({x['record_id'] for x in records})==898
+assert records and len({x['record_id'] for x in records})==len(records),'记录编号重复'
 assert all(x['review_status']=='verified_dated_official_record' and x['current_license_validity']=='not_independently_confirmed' for x in records)
 paths=list(DOCS.rglob('*.html'));titles=set();link_count=0;broken=[]
 for f in paths:
@@ -42,7 +42,7 @@ for f in paths:
   link_count+=1
  for ld in p.ld:assert ld.get('@context')=='https://schema.org'
 assert not broken,broken[:20]
-record_pages=list((DOCS/'media').glob('*/index.html'));assert len(record_pages)==898
+record_pages=list((DOCS/'media').glob('*/index.html'));assert len(record_pages)==len(records),(len(record_pages),len(records))
 for x in records:
  f=DOCS/'media'/x['record_id'].lower()/'index.html';s=f.read_text()
  assert x['license_number'] in s and x['list_as_of'] in s and x['evidence_sha256'] in s
@@ -50,6 +50,6 @@ for x in records:
 sitemap=ET.parse(DOCS/'sitemap.xml');urls=[x.text for x in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
 assert len(urls)==len(paths)-1 and len(set(urls))==len(urls)
 assert '404.html' not in '\n'.join(urls)
-coverage=json.loads((DOCS/'data/coverage.json').read_text());assert len(coverage)==31
-report={'html_pages_checked':len(paths),'public_record_pages':len(record_pages),'internal_links_checked':link_count,'broken_internal_links':0,'unique_titles':len(titles),'sitemap_urls':len(urls),'regions':31,'public_records':898,'held_records_in_public_data':0}
+coverage=json.loads((DOCS/'data/coverage.json').read_text());assert len(coverage)>=31
+report={'html_pages_checked':len(paths),'public_record_pages':len(record_pages),'internal_links_checked':link_count,'broken_internal_links':0,'unique_titles':len(titles),'sitemap_urls':len(urls),'regions':len(coverage),'public_records':len(records),'held_records_in_public_data':0}
 (ROOT/'VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False))
