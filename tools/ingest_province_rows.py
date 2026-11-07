@@ -65,10 +65,23 @@ def main():
     problems = []
     for r in rows:
         name = re.sub(r"\s+", "", (r.get(args.name_column) or "")).strip()
-        dom = (r.get(args.domain_column) or "").split("、")[0].strip().lower()
+        raw_addr = (r.get(args.domain_column) or "").strip()
         lic = (r.get(args.license_column) or "").strip()
         op = re.sub(r"\s+", "", (r.get(args.operator_column) or "")).strip()
         seq = int(re.sub(r"\D", "", str(r.get("序号", ""))) or 0)
+
+        # 一行可含多个地址（、分隔），地址可带路径；域名取路径前的主机部分
+        domains = []
+        for part in re.split(r"[、,，]+", raw_addr):
+            part = part.strip().lower()
+            if not part:
+                continue
+            host = part.split("/", 1)[0].strip(".")
+            if DOMAIN_RE.match(host) and host not in domains:
+                domains.append(host)
+        if not domains:
+            problems.append((f"域名异常 {raw_addr!r}", r))
+            continue
 
         if not name:
             problems.append(("名称缺失", r))
@@ -76,14 +89,12 @@ def main():
         if not re.fullmatch(r"\d{11}", lic):
             problems.append((f"证号异常 {lic!r}", r))
             continue
-        if not DOMAIN_RE.match(dom):
-            problems.append((f"域名异常 {dom!r}", r))
-            continue
         if (name, args.province) in existing_name:
             problems.append((f"名称重复 {name}", r))
             continue
-        if dom in existing_dom:
-            problems.append((f"域名重复 {dom}", r))
+        clash = [d for d in domains if d in existing_dom]
+        if clash:
+            problems.append((f"域名重复 {'、'.join(clash)}", r))
             continue
 
         rid = f"{args.prefix}-{seq:03d}" if seq else f"{args.prefix}-X{len(new)+1:03d}"
@@ -91,13 +102,16 @@ def main():
             rid += "b"
         existing_ids.add(rid)
 
+        # 每行可带 _证据 覆盖默认证据方式（如同批中"经首页标题核验"与"仅原图复读确认"并存）
+        method = (r.get("_证据") or args.evidence_method).strip()
+
         new.append({
             "record_id": rid,
             "name": name,
             "region": args.province,
             "license_number": lic,
-            "registered_addresses_raw": dom,
-            "registered_domains": [dom],
+            "registered_addresses_raw": raw_addr,
+            "registered_domains": domains,
             "operator_name": op or None,
             "service_type": "互联网站",
             "source_url": args.source_url,
@@ -106,7 +120,7 @@ def main():
             "verified_at": str(date.today()),
             "evidence_id": rid,
             "evidence_sha256": None,
-            "evidence_method": args.evidence_method,
+            "evidence_method": method,
             "issuing_authority": args.issuing,
             "review_status": "verified_dated_official_record",
             "current_license_validity": "not_independently_confirmed",

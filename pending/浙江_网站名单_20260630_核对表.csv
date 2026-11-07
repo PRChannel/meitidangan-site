@@ -1,0 +1,125 @@
+﻿序号,服务名称,服务地址,许可证编号,_核验,_标题
+1,浙江在线,www.zjol.com.cn,33120170001,title_match,浙江在线-浙江省委省政府新闻门户网站
+2,新蓝网,www.cztv.com,33120170002,title_match,新蓝网
+3,杭州网,www.hangzhou.com.cn,33120170003,title_match,杭州网-杭州-新闻-门户-权威亲民-关注民生-国家重点新闻网站
+4,中国宁波网,cnnb.com.cn,33120170004,title_match,中国宁波网-新闻-服务-论坛-门户
+5,宁波日报数字报,epaper.cnnb.com.cn/nbrb,33120170004,mismatch,
+6,睛彩宁波,ningbo.cnnb.com.cn,33120170004,mismatch,IP CHINA
+7,钱江晚报,www.thehour.cn,33120180001,mismatch,潮新闻官网_要闻
+8,葫芦网,www.hoolo.tv,33120180002,title_match,葫芦网-杭州网络电视台-杭州网络广播电视台-杭州新闻
+9,宁波广电网,www.nbtv.cn,33120180003,title_match,宁波广电网-同住一座城 共建一个家
+10,长兴新闻网,zjcxnews.com.cn,33120190001,title_match,长兴新闻网
+11,镇海新闻网,www.zhxww.net,33120190003,title_match,镇海新闻网_浙江省最佳县市新闻网
+12,泰顺新闻网,www.tsxw66.com,33120190004,title_match,泰顺新闻网
+13,文成新闻网,www.66wc.com,33120190005,title_match,文成新闻网
+14,嵊州新闻网,www.sznews.zj.cn,33120190007,unreachable,
+15,嵊州视听网,www.szttkk.cn,33120190007,title_match,嵊州视听网_嵊州网络电视台_嵊州第一视频门户网站
+16,龙游新闻网,lyrt.com.cn,33120190008,unreachable,
+17,普陀新闻网,ptnews.zjol.com.cn,33120190009,title_match,普陀新闻网
+18,仙居新闻网,www.rjxj.com.cn,33120190010,title_match,仙居新闻网 - 浙江省仙居县唯一具有新闻发布资质的综合性新闻门户网站
+19,三门新闻网,www.smnews.com.cn,33120190011,unreachable,
+20,玉环新闻网,yhnews.com.cn,33120190012,title_match,玉环新闻网：玉环门户、主流媒体
+21,青田网,www.zgqt.zj.cn,33120190013,title_match,青田网
+22,绍兴网,www.shaoxing.com.cn,33120190015,title_match,绍兴网
+23,上城网,hzsc.com.cn,33120190016,title_match,上城新闻网
+24,拱墅新闻网,www.gongshunews.com,33120190018,title_match,拱墅新闻网
+25,余杭新闻网,www.eyh.cn、www.yhtv.com.cn,33120190019,mismatch,news
+26,萧山网,www.xsnet.cn,33120190020,title_match,萧山网
+27,富阳网,www.fuyangtv.com,33120190021,unreachable,
+28,海曙新闻网,hsnews.cnnb.com.cn,33120190022,title_match,海曙新闻网——综合性门户网站
+29,北仑新闻网,blnews.cnnb.com.cn,33120190023,unreachable,
+30,宁海新闻网,nh.cnnb.com.cn,33120190024,title_match,宁海新闻网 - 宁海综合性门户网站|浙江省文化传播创新十佳网站
+31,鹿城新闻网,www.66lc.com,33120190025,title_match,鹿城新闻网
+32,瓯海新闻网,www.ohnews.cn,33120190027,title_match,瓯海新闻网——瓯海区委区政府新闻门户网站
+33,洞头新闻网,www.dtxw.cn,33120190028,title_match,洞头新闻网
+34,嘉善新闻网,www.jsxww.cn,33120190032,unreachable,
+35,吴兴新闻网,wxnews.zjol.com.cn,33120190033,title_match,吴兴新闻网
+36,南浔在线新闻网,nxnews.zjol.com.cn,33120190034,mismatch,
+37,德清新闻网,www.dqnews.cn,33120190035,title_match,德清新闻网_德清权威主流网络媒体
+38,新昌新闻网,xcnews.zjol.com.cn,33120190037,title_match,新昌新闻网
+39,婺城新闻网,www.jhwcw.com,33120190038,title_match,婺城新闻网
+40,兰溪新闻网,www.lxnews.cn,33120190039,title_match,兰溪新闻网- 首页
+41,义乌城市网,www.ywcity.cn,33120190040,mismatch,
+42,柯城新闻网,kcnews.zjol.com.cn,33120190041,mismatch,首页跳转模版
+43,衢江新闻网,qjnews.cztv.com,33120190042,unreachable,
+44,江山新闻网,js-news.cn,33120190043,unreachable,
+45,开化新闻网,khnews.zjol.com.cn,33120190044,title_match,开化新闻网
+46,定海新闻网,dhnews.zjol.com.cn,33120190045,title_match,定海新闻网
+47,岱山新闻网,dsnews.zjol.com.cn,33120190046,title_match,岱山新闻网-岱山新闻网站，岱山门户网站
+48,嵊泗新闻网,ssnews.zjol.com.cn,33120190047,title_match,嵊泗新闻网
+49,黄岩新闻网,hynews.zjol.com.cn,33120190048,title_match,黄岩新闻网 - 黄岩第一新闻门户网站
+50,路桥新闻网,luqiao.zjol.com.cn,33120190049,title_match,路桥新闻网
+51,中国临海新闻网,lhnews.zjol.com.cn,33120190050,mismatch,临海新闻网
+52,天台新闻网,www.ttcmzx.cn,33120190051,title_match,天台新闻网
+53,云和新闻网,www.zgyhxw.cn,33120190052,title_match,云和新闻网
+54,景宁新闻网,jnnews.zjol.com.cn,33120190053,unreachable,
+55,宁波都市传媒网,www.nbwbw.com,33120190054,title_match,宁波都市传媒网
+56,东海网,www.dhtv.cn,33120190055,unreachable,
+57,浙江网信网,www.zjwx.gov.cn,33120200001,title_match,浙江网信网
+58,杭州高新区（滨江）新闻网,www.hhtznews.com.cn,33120200004,title_match,杭州高新区（滨江）新闻网
+59,临安新闻网,www.lanews.com.cn,33120200005,title_match,临安新闻网 | 临安新闻门户网站 | 浙江临安 | 浙江省“文明办网”示范单位 | 浙江省优秀新闻网
+60,建德新闻网,www.jdnews.com.cn,33120200006,title_match,建德新闻网 | 建德网 | 建德门户 | 建德 | 新安江
+61,桐庐新闻网,www.tlnews.com.cn,33120200007,title_match,桐庐新闻网
+62,千岛湖新闻网,www.qdhnews.com.cn,33120200008,title_match,千岛湖新闻网 | 淳安新闻门户网站 | 浙江淳安千岛湖
+63,江北新闻网,jbxww.cnnb.com.cn,33120200009,title_match,江北新闻网
+64,鄞州新闻网,nbyznews.cn,33120200010,unreachable,
+65,锦凤网,www.fhtv.net.cn,33120200011,mismatch,奉化新闻网
+66,奉化新闻网,www.fhnews.com.cn,33120200011,title_match,奉化新闻网
+67,余姚新闻网,www.yynews.com.cn,33120200012,title_match,余姚新闻网 - 余姚综合性门户网站
+68,慈溪新闻网,www.cxnews.cn、www.cxnews.com.cn,33120200013,title_match,慈溪新闻网
+69,象山港,www.cnxsg.cn,33120200014,title_match,象山港网站-象山新闻门户网站
+70,龙港新闻网,www.lgxw.cn,33120200015,title_match,龙港新闻网
+71,乐清网,www.yqcn.com,33120200016,title_match,"乐清网,乐清新闻,乐清生活,乐清民生,乐清文化 - 从这里看乐清!"
+72,苍南新闻网,www.cnxw.com.cn,33120200017,title_match,苍南新闻网
+73,南湖新闻网,nhnews.zjol.com.cn,33120200018,title_match,南湖新闻网
+74,秀洲新闻网,www.jxxznews.com.cn,33120200019,title_match,秀洲新闻网——点秀洲看世界 让世界看秀洲
+75,海宁新闻网,hnnews.zjol.com.cn,33120200020,title_match,海宁新闻网
+76,桐乡新闻网,txnews.zjol.com.cn,33120200021,title_match,桐乡新闻网-桐乡的新闻门户网站
+77,海盐新闻网,www.hyxww.com,33120200022,title_match,海盐新闻网
+78,湖州在线,www.hz66.com,33120200023,title_match,湖州在线
+79,传媒湖州,www.hugd.com,33120200023,unreachable,
+80,中国柯桥网,www.zgkqw.com,33120200025,unreachable,
+81,上虞新闻网,www.syrmtzx.com,33120200026,title_match,上虞新闻网
+82,诸暨网,www.zjrb.cn,33120200027,title_match,诸暨网-诸暨区域门户
+83,金义新区新闻网,jdnews.zjol.com.cn,33120200028,title_match,金义新区新闻网，金义新区权威新闻发布网站
+84,东阳新闻网,www.dynews.zj.cn,33120200029,title_match,东阳新闻网-首页
+85,永康日报数字报,paper.lifeyk.com,33120200030,mismatch,
+86,永康新闻网,www.yknews.com.cn,33120200030,title_match,永康新闻网_首页
+87,武义新闻网,www.wynews.cn,33120200031,title_match,武义新闻网-武义县综合新闻门户网站
+88,浦江新闻网,gw.pjnews.cn,33120200032,title_match,浦江新闻
+89,天目蓝云,mp.tmuyun.com,33120200032,title_match,天目蓝云
+90,磐安新闻网,www.panews.cn,33120200033,title_match,磐安新闻网
+91,常山新闻网,csnews.zjol.com.cn、changshannews.com,33120200034,title_match,常山新闻网
+92,椒江新闻网,www.jiaojiangnews.com,33120200035,title_match,椒江新闻网-首页
+93,温岭新闻网,www.wlxww.com,33120200036,title_match,温岭新闻网_首页
+94,莲都新闻网,www.newsld.cn,33120200037,title_match,莲都新闻网
+95,缙云新闻网,www.jynews.com.cn,33120200039,title_match,缙云新闻网
+96,遂昌新闻网,www.scxnews.cn,33120200040,title_match,遂昌新闻网
+97,松阳新闻网,www.zgsynews.com,33120200041,title_match,松阳新闻网——松阳拥有新闻发布权的综合性门户网站
+98,庆元网,www.zgqy.zj.cn,33120200042,title_match,庆元网-庆元县委县政府新闻门户网站
+99,《农村信息报》电子报,www.ncxxb.com.cn,33120210002,mismatch,
+100,龙泉新闻网,www.lqnews.com.cn,33120210004,title_match,龙泉新闻网——龙泉市新闻门户网站
+101,临平新闻网,www.hi-lp.cn,33120210005,title_match,临平新闻网
+102,安吉新闻网,www.ajnews.cn,33120210006,title_match,"安吉,安吉新闻网,安吉网络新媒体门户"
+103,安吉视窗网,www.ajbtv.com,33120210006,title_match,"安吉视窗网,安吉广播电视台"
+104,浙江工人日报网,www.zjgrrb.cn,33120220001,mismatch,
+105,潮新闻,www.tianmunews.com,33120230001,title_match,潮新闻官网_要闻
+106,今日浙江,jrzj.cn,33120230002,title_match,今日浙江网
+107,财闻,www.caiwennews.com,33120230004,title_match,财闻网-财经·科技·法治
+108,金华新闻网,www.jhnews.com.cn,33120230005,title_match,金华新闻网
+109,衢州传媒网,www.qz123.com,33120230006,title_match,衢州传媒网 - 衢州市新闻传媒中心
+110,龙湾新闻网,www.lwnews.net,33120230007,unreachable,
+111,永嘉新闻网,www.yjnet.cn,33120230008,title_match,永嘉网
+112,舟山网,www.zhoushan.cn,33120230009,mismatch,
+113,丽水网,www.lsnews.com.cn,33120230010,title_match,丽水网 - 丽水新闻综合门户网站
+114,嘉兴人网,www.jiaxingren.com,33120240001,title_match,嘉兴人网 | 技术赋能传播 创新驱动发展
+115,嘉兴在线,www.cnjxol.com,33120240001,title_match,嘉兴在线 - 嘉兴第一新闻门户网站 嘉兴日报、嘉兴广电联合主办
+116,中国台州网,www.taizhou.com.cn,33120240002,title_match,中国台州网-台州第一新闻门户网站
+117,温州新闻网,www.66wz.com,33120240003,title_match,温州新闻网 - 浙江省重点新闻网站-温州市传媒集团有限公司主办
+118,科技金融网,www.kjjrw.com.cn,33120240003,title_match,科技金融网-科技金融时报官网
+119,东海网,www.dhtv.cn,33120240003,unreachable,
+120,平阳新闻网,www.wzpy.cn,33120240004,title_match,平阳新闻网
+121,印象浙江英文网,www.inzhejiang.com.cn、www.inzhejiang.com,33120250001,title_match,In Zhejiang 印象浙江
+122,中国义乌网网站,www.zgyww.cn,33120250002,title_match,中国义乌网_义乌官方权威媒体_义乌新闻门户网站
+123,浙江党建网,www.zjdj.com.cn,33120250001,title_match,浙江党建网
+124,西湖网,www.xihunet.cn,33120260002,title_match,西湖网

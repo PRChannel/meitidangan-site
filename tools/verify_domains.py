@@ -37,15 +37,30 @@ def core(name):
     return n
 
 
+def decode_body(raw: bytes) -> str:
+    head = raw[:3000].decode("ascii", "ignore").lower()
+    enc = "utf-8"
+    m = re.search(r'charset=["\']?([\w\-]+)', head)
+    if m:
+        e = m.group(1)
+        enc = "gb18030" if e.startswith("gb") else ("utf-8" if "utf" in e else e)
+    for e in (enc, "gb18030", "utf-8"):
+        try:
+            return raw.decode(e)
+        except Exception:
+            continue
+    return raw.decode("utf-8", "ignore")
+
+
 def fetch(url, timeout=12):
     try:
         r = subprocess.run(
             ["curl", "-sSL", "-m", str(timeout), "-A", UA, "-o", "-", "-w", "\n@@%{http_code}@@", url],
-            capture_output=True, text=True, errors="ignore",
+            capture_output=True,
         )
-        body, _, tail = r.stdout.rpartition("\n@@")
-        code = tail.replace("@@", "").strip()
-        return code, body
+        body_bytes, _, tail = r.stdout.rpartition(b"\n@@")
+        code = tail.decode("ascii", "ignore").replace("@@", "").strip()
+        return code, decode_body(body_bytes)
     except Exception:
         return "000", ""
 

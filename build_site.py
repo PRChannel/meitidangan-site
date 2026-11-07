@@ -56,6 +56,8 @@ def ev_meta(r):
   return ('PDF原件文本提取已校验','本记录来自国家网信办公布的PDF名单，已用程序校验条数与名单标注一致、序号连续、许可证号格式与登记地址完整，并保留原PDF的SHA256。PDF版面的逐行目视复核尚未完成。')
  if m=='ocr_image_recognition_domain_http_checked':
   return ('图片名单OCR提取+域名核验','本记录来自省级网信办公布的图片版名单，经本地OCR识别与表格重建，并用网站首页标题核验域名归属。图片分辨率有限，个别用字可能存在误差；如发现错误，请通过纠错渠道反馈。')
+ if m=='ocr_image_recognition_address_print_confirmed':
+  return ('图片名单OCR提取+地址复读','本记录来自省级网信办公布的图片版名单，登记地址经原图放大复读确认与原名单一致；该网站当前改版或暂不可访问，未能做首页标题核验。如发现错误，请通过纠错渠道反馈。')
  return ('对应版本原件已核对','本记录的网站名称、登记地址及许可证号已与对应版本原件核对，保留原记录编号。')
 def ev_short(r):
  return ev_meta(r)[0]
@@ -65,6 +67,8 @@ def ev_method_text(r):
   return 'PDF原件文本提取，条数与序号连续性已程序校验'
  if m=='ocr_image_recognition_domain_http_checked':
   return '图片名单OCR识别与表格重建，域名经网站首页标题核验'
+ if m=='ocr_image_recognition_address_print_confirmed':
+  return '图片名单OCR识别与表格重建，登记地址经原图放大复读确认'
  return '原表页面逐条核对'
 def pagehead(title,desc,kicker='PUBLIC RECORDS',route=''):
  p=root_prefix(route)
@@ -84,9 +88,11 @@ home=f'''<section class="hero"><div><div class="kicker">PUBLIC MEDIA RECORDS / C
 write('','首页',f'依据公开名单版本查询中国新闻网站服务名称、登记域名、许可证号与来源。{N}条已核对记录（含中央新闻单位{N_CENTRAL}条），覆盖缺口明确保留。',home,schema=dataset)
 directory=pagehead('媒体查询',f'仅检索{N}条已经过对应版本原件核对的公开记录。名称相同、编号相同或同域名的服务项不据此自动合并。',route='directory/')+f'''<form id="directory-form" class="filters" action="./"><label>媒体、域名或许可证编号<input id="query" name="q" aria-label="媒体、域名或许可证编号" autocomplete="off"></label><label>地区<select id="region" name="region"><option value="">全部地区</option>{''.join(f'<option value="{esc(r)}">{esc(r)}</option>' for r in REGIONS)}</select></label><button class="btn" type="submit">查询</button><button class="btn-light" type="button" id="reset-filter">重置</button></form><div class="resultmeta"><span id="result-count">共{N}条已核对版本记录</span><span>核验日期：{DATE}</span></div><div class="tablebox" id="directory-table"><table><thead><tr><th scope="col">网站服务名称</th><th scope="col">登记地址原文</th><th scope="col">许可证编号</th><th scope="col">名单统计截至</th><th scope="col">证据与详情</th></tr></thead><tbody id="directory-body">{''.join(row(r,'../') for r in records)}</tbody></table></div><div id="empty-result" class="empty" hidden>未找到符合条件的公开版本记录。未查到不等同于网站没有许可，请查看<a class="text-link" href="../sources/">来源与覆盖范围</a>。</div><div id="pagination" class="pagination" hidden><button id="prev-page" class="btn-light" type="button">上一页</button><span id="page-label" class="meta"></span><button id="next-page" class="btn-light" type="button">下一页</button></div><noscript><p class="note">当前浏览器未运行筛选脚本，下面保留完整记录表，可使用浏览器查找功能检索。</p></noscript>'''
 write('directory/','媒体查询',f'检索{N}条对应版本原件已核对的网站服务记录，支持名称、域名、许可证号和地区查询。',directory,'directory')
+name_counts=collections.Counter(r['name'] for r in records)
 for r in records:
  route='media/'+slug(r)+'/'
- detail=pagehead(r['name'],f"{r['region']}网站服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'MEDIA RECORD',route)
+ dtitle=r['name'] if name_counts[r['name']]==1 else f"{r['name']}（{r['license_number']}）"
+ detail=pagehead(dtitle,f"{r['region']}网站服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'MEDIA RECORD',route)
  # 证据级别必须如实区分：省级为原件页面逐条核对，中央为PDF文本提取+程序校验
  ev_label,ev_text=ev_meta(r)
  fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
@@ -95,7 +101,7 @@ for r in records:
  if r['source_published_at'] and r['source_published_at'][:4]!=r['list_as_of'][:4]:date_note='<p class="note">原来源页面显示的发布日期早于名单更新年份，本页分别照录两项日期，不据旧页面日期判定名单版本。</p>'
  detail+=f'''<div class="detail-grid"><section class="panel"><h2>名单登记信息</h2><dl class="fields">{fields_html}</dl></section><aside class="panel"><span class="label">{ev_label}</span><h2>来源与核对说明</h2><p>{ev_text}</p><p>这条记录说明其出现于所列统计日期的名单。不能据此认定当前许可仍有效、站点实时可访问或某个商业发稿渠道获得授权。</p>{date_note}<p><a class="source-link" href="{esc(r['source_url'])}" target="_blank" rel="noopener noreferrer">打开原始来源公告</a></p><details class="evidence"><summary>原件核对信息</summary><p>证据编号：{esc(r['evidence_id'])}</p><p>原件SHA256：<code>{esc(r['evidence_sha256'])}</code></p></details><p><a class="text-link" href="../../methods/">查看核验方法</a></p></aside></div><p><a class="text-link" href="../../directory/">返回媒体查询</a></p>'''
  schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+' 网站许可名单版本记录','url':DOMAIN+'/'+route,'description':f"网站登记地址及编号，名单截至{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
- write(route,r['name']+' '+r['registered_domains'][0],f"{r['name']}，登记地址{r['registered_addresses_raw']}，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
+ write(route,dtitle+' '+r['registered_domains'][0],f"{r['name']}，登记地址{r['registered_addresses_raw']}，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
 for i,x in enumerate(coverage,1):
  rs=[r for r in records if r['region']==x['省份']];route=f'regions/{i:02d}/';body=pagehead(x['省份']+'网站服务记录',f"当前公开{len(rs)}条对应版本记录。采集状态：{x['覆盖状态']}。",'REGIONAL RECORDS',route)
  body+='<p class="note">'+esc(x['问题与后续'])+('。公开记录数不是全国现行许可总量。' if x['省份']=='中央' else '。公开记录数不是全省现行许可总量。')+'</p>'
