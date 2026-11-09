@@ -256,12 +256,12 @@
   "source_url": "https://www.cqnews.net/web/content_1523735262943801344.html",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 51,
-  "original_count_date": "2026-07",
-  "existing_records": 51,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "55家单位；51个互联网站、51个应用程序、3个论坛、278个公众账号，共383个服务项",
+  "original_count_date": "2026-06-30",
+  "existing_records": 437,
+  "fetch_status": "html_table_parsed",
+  "review_status": "extracted_full_20260630",
+  "notes": "公告页3张表格（网站51/应用51+论坛3/账号278），无主体表，主体按证号推导"
  },
  {
   "region": "四川",
