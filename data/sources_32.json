@@ -328,12 +328,12 @@
   "source_url": "https://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 34,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "117家单位；互联网站32、应用程序111、公众账号662，共805个服务项",
+  "original_count_date": "2026-09-30",
+  "existing_records": 924,
+  "fetch_status": "official_attachment_xlsx_parsed",
+  "review_status": "extracted_full_20260930",
+  "notes": "公告页挂4个xlsx附件（主体117/网站32/应用111/账号662），注意链接真实扩展名为.xlsx"
  },
  {
   "region": "青海",

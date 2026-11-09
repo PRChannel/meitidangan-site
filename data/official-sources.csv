@@ -26,7 +26,7 @@
 云南,2026-10-23,https://mp.weixin.qq.com/s/FR-ajB-Qm2hZNzGqIUREig,https://mp.weixin.qq.com/s/FR-ajB-Qm2hZNzGqIUREig（正文概述+草料活码二维码→官方doc原件）,1014,原件已覆盖,doc文本直接提取：网站63+应用111+论坛2+公众账号837+网络直播1，主体162
 西藏,2026-10-23,https://mp.weixin.qq.com/s/HuY_op9A3lBDFwR_hm06oQ,,0,6月官方历史原件已核对；9月来源链仍待确认,原表没有域名；6月、9月名称单位差异见独立版本表
 陕西,2026-10-23,https://app.sxdaily.com.cn/sxrbs/site1/mweb/jaa4o/content_20156016.html,,0,转载历史原图待官方链确认,官网原件未取得，52行暂缓
-甘肃,2026-10-23,http://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,https://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,34,官方原件已核对,历史原件版本仍需最终核验
+甘肃,2026-10-23,http://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,https://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,924,2026-09-30版全量：官网公告4个xlsx机读附件直接提取，网站32+应用程序111+公众账号662=805服务项（与公告口径一致）+许可主体117；另保留2026-06-30版网站记录2条（新版未列）,服务表3条证号不在主体表（甘肃民航融媒网62120220002、新甘肃62120210003、宁县融媒账号62120230043），原件自身不一致，如实保留；永登县政府网（62120230051）、甘肃省总工会官网（62120250001）在06-30版网站表内、09-30版未列，保留为历史版本记录
 青海,2026-10-23,https://www.qhcac.gov.cn/hdhlwxw/hdxxxkgs/query/202610141030358965.html,https://www.qhnews.com/index/system/2026/07/02/030577849.shtml,21,官方原件已核对,HTML完整表
 宁夏,2026-10-23,https://www.nxnews.net/sz/qwfb/202609/t20260930_1609129.html,https://www.nxnews.net/sz/qwfb/202510/P020251020373056789383.pdf,241,原件已覆盖（2025-09-30版）,PDF表格提取：网站10+应用14+公众账号217，主体29；PDF直链绕过HTML层电信WAF，2026-09-30版公告HTML被WAF拦截、附件直链未获取，待更新
 新疆,2026-10-23,https://www.xinjiang.gov.cn/xinjiang/tzgg/202607/df4546eb75cd4fd4883644c4c6e6f52e.shtml,,0,官方原件已核对但截至日期不明,公告未明确统计截止日期，留空
