@@ -1,15 +1,15 @@
 [
  {
   "region": "北京",
-  "source_url": "https://beijing.qianlong.com/2026/0701/8691077.shtml",
-  "url_origin": "existing_project_list",
-  "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": null,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "source_url": "https://beijing.qianlong.com/2026/0930/8734256.shtml",
+  "url_origin": "cac_20261023_index",
+  "index_page": "https://www.cac.gov.cn/2026-10/23/c_1794509036894710.htm",
+  "published_count_reference": "31家/265服务项（截至2026-09-30）",
+  "original_count_date": "2026-09-30",
+  "existing_records": 296,
+  "fetch_status": "fetched_ocr_verified",
+  "review_status": "verified_dated_official_record",
+  "notes": "千龙网公告26张JPG长图边框网格OCR重建；网站17原地更新+服务248+主体31"
  },
  {
   "region": "天津",
