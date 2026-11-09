@@ -16,7 +16,7 @@
 山东,2026-10-23,https://sd.dzwww.com/sdnews/202610/t20261008_18182564.htm,https://sd.dzwww.com/sdnews/202610/t20261008_18182564.htm,43,官方原件已核对,14行与旧候选版本差异
 河南,2026-10-23,https://www.hnwx.gov.cn/2026/10-19/80874.html,https://www.hnwx.gov.cn/2026/04-22/75428.html,44,图片名单OCR提取，网站分项40条域名可访问性已核验,名单互联网站分项45个中44个已核实；濮阳新闻网登记域名pytv.ha.cn为2008年历史批复域名、当前不可达，原件已不可得，暂未收录
 湖北,2026-10-23,http://news.cnhubei.com/content/2026-10/08/content_20226440.html,https://news.cnhubei.com/content/2026-07/05/content_20068622.html,74,官方原件已核对,名称证号差异待版本复核
-湖南,2026-10-23,https://moment.rednet.cn/pc/content/646054/56/16360443.html,https://moment.rednet.cn/nograb/646041/98/16060115.html,145,官方原件已核对,同证多个网站按原表保留
+湖南,2026-10-23,https://moment.rednet.cn/pc/content/646054/56/16360443.html,https://moment.rednet.cn/content/646054/56/16362236.html,1424,2026-09-30版全量：红网时刻公告15张PNG长图边框网格OCR重建，网站145（6月版144条继承已验证域名+新增天心新闻网）+应用程序156+论坛3+网络直播2+公众账号897=1203行服务项+许可主体171,公告口径1209个服务项（账号903）与长图实际897行不符：账号表序号跳过142-144、257-259（原件长图缺6行），如实按图收录897行；账号330-334行许可证编号原件即印为10位（4312018000，末位缺失，对应长沙市广播电视台43120180004），按原件保留；长图3处相邻行粘连已目视拆分（网站3/4、应用56/57、账号416/417与874/875）
 广东,2026-10-23,https://mp.weixin.qq.com/s/uH_T1RyKvvE6oPJwoQjiqA,https://www.cagd.gov.cn/v/2026/10/9872.html,77,官方原件已核对,西江网、21经济网共4行证号冲突
 广西,2026-10-23,https://mp.weixin.qq.com/s/Pi-eMsOOJDZT7f7X37DTCA,https://mp.weixin.qq.com/s/Pi-eMsOOJDZT7f7X37DTCA（正文长图即名单原件）,882,原件已覆盖,长图OCR表格重建：网站44+应用90+论坛1+公众账号746+其他1，主体120
 海南,2026-10-23,https://www.hainan.gov.cn/hainan/0101/202609/bb11fbbe5cd94471b19fc5da19ccab79.shtml,https://www.hainan.gov.cn/hainan/0101/202609/bb11fbbe5cd94471b19fc5da19ccab79.shtml,382,2026-09-30版全量：官网公告HTML表格直接文本提取，网站16+应用程序28+公众账号308=352服务项（与公告口径一致）+许可主体30,308个公众账号中含现场云网络直播公众账号12个（按公告口径计入公众账号）；《证券导报》社在主体表、服务表写作“证券导报社”，原件自身不一致，如实保留

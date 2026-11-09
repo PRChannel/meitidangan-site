@@ -20,7 +20,8 @@ assert all(r['review_status']=='verified_dated_official_record' for r in records
 assert all(r['registered_domains'] for r in SITES),'存在缺少域名的网站记录'
 assert all(not r['registered_domains'] for r in ENTITIES+FORMS),'主体与服务形式记录不应带域名'
 assert all(r.get('service_form') for r in FORMS),'服务形式记录缺少 service_form'
-assert all(re.fullmatch(r'\d{11}',r['license_number']) for r in records),'许可证号格式异常'
+# 湖南2026-09-30版公告有5行证号原件即印为10位（4312018000），按原件保留
+assert all(re.fullmatch(r'\d{10,11}',r['license_number']) for r in records),'许可证号格式异常'
 assert all(urlparse(r['source_url']).scheme in ('http','https') for r in records),'来源地址异常'
 # 统计口径全部由数据推导，避免改条数时漏改文案
 N=len(records)

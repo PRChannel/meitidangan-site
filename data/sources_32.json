@@ -205,15 +205,15 @@
  },
  {
   "region": "湖南",
-  "source_url": "https://moment.rednet.cn/pc/nograb/646048/94/15815220.html",
-  "url_origin": "cac_2026_04_index",
+  "source_url": "https://moment.rednet.cn/content/646054/56/16362236.html",
+  "url_origin": "websearch_20261109",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 147,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "171家单位；互联网站145、应用程序156、论坛3、网络直播2、公众账号903，共1209个服务项",
+  "original_count_date": "2026-09-30",
+  "existing_records": 1424,
+  "fetch_status": "ocr_image_table_rebuild",
+  "review_status": "extracted_full_20260930",
+  "notes": "红网时刻2026-10-10发布，正文15张PNG长图（m01-m14为6张分表，m15尾图）；逐行带竖线检测OCR管线；账号表原件跳号142-144/257-259"
  },
  {
   "region": "广东",
