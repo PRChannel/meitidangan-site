@@ -59,7 +59,8 @@ def main():
     rows = [r for r in load(args.rows) if r.get("_状态", "已核验") == "已核验"]
 
     existing_lic = {r["license_number"] for r in records if r.get("license_number")}
-    existing_name = {(r["name"], r["region"]) for r in records}
+    existing_name = {(r["name"], r["region"]) for r in records
+                     if r.get("record_kind", "website") == "website"}
     existing_dom = {d.lower() for r in records for d in (r.get("registered_domains") or [])}
     existing_ids = {r["record_id"] for r in records}
 
@@ -75,7 +76,7 @@ def main():
         # 一行可含多个地址（、分隔），地址可带路径；域名取路径前的主机部分
         domains = []
         for part in re.split(r"[、,，]+", raw_addr):
-            part = part.strip().lower()
+            part = re.sub(r"^https?://", "", part.strip().lower())
             if not part:
                 continue
             host = part.split("/", 1)[0].strip(".")
