@@ -1,5 +1,5 @@
 name: Build and deploy site
-# 数据或构建脚本变更时自动重建站点并回写 docs/。
+# 数据或构建脚本变更时自动重建站点、回写 docs/ 并部署到 GitHub Pages。
 # docs/ 目录的变更不再触发本流程，避免循环构建。
 on:
   push:
@@ -13,10 +13,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: build-deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -45,3 +47,20 @@ jobs:
             git commit -m "自动构建站点 $(date -u +%Y-%m-%d) [skip ci]"
             git push
           fi
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
