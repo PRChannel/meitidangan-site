@@ -28,12 +28,12 @@
   "source_url": "https://www.caheb.gov.cn/system/2018/02/09/011717832.shtml",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 34,
-  "original_count_date": "2026-07",
-  "existing_records": 34,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "服务单位187家；互联网站33、应用程序178、公众账号492，共703个许可服务项",
+  "original_count_date": "2026-10",
+  "existing_records": 890,
+  "fetch_status": "rendered_dom_table_parsed",
+  "review_status": "extracted_full_202610",
+  "notes": "页面正文由JS对字符表解码，静态HTML为乱码，需 Chrome --headless --dump-dom 渲染后解析4张表格"
  },
  {
   "region": "山西",
