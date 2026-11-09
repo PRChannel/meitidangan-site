@@ -112,12 +112,12 @@
   "source_url": "https://jsnews.jschina.com.cn/jsyw/202607/t20260702_s6a45c01fe4b0b98c2df2bfb1.shtml",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 75,
-  "original_count_date": "2026-03-31",
-  "existing_records": 75,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "105家服务主体；互联网站75、应用程序109、博客1、公众账号423、其他3，共611个服务项",
+  "original_count_date": "2026-06-30",
+  "existing_records": 716,
+  "fetch_status": "official_attachment_docx_parsed",
+  "review_status": "extracted_full_20260630",
+  "notes": "公告正文末挂1个docx附件含6张表（主体105/网站75/应用109/博客1/账号423/其他3）"
  },
  {
   "region": "浙江",
