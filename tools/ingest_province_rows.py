@@ -43,6 +43,8 @@ def main():
     ap.add_argument("--source-published-at", default="")
     ap.add_argument("--issuing", required=True)
     ap.add_argument("--evidence-method", required=True)
+    ap.add_argument("--evidence-id", default="", help="默认用记录编号")
+    ap.add_argument("--evidence-sha256", default="")
     ap.add_argument("--name-column", default="网站名称")
     ap.add_argument("--domain-column", default="域名")
     ap.add_argument("--operator-column", default="单位名称")
@@ -118,8 +120,8 @@ def main():
             "source_published_at": args.source_published_at or None,
             "list_as_of": args.list_as_of,
             "verified_at": str(date.today()),
-            "evidence_id": rid,
-            "evidence_sha256": None,
+            "evidence_id": args.evidence_id or rid,
+            "evidence_sha256": args.evidence_sha256 or None,
             "evidence_method": method,
             "issuing_authority": args.issuing,
             "review_status": "verified_dated_official_record",
