@@ -1,14 +1,14 @@
 {
-  "html_pages_checked": 6016,
-  "public_record_pages": 5972,
-  "internal_links_checked": 108079,
+  "html_pages_checked": 6286,
+  "public_record_pages": 6242,
+  "internal_links_checked": 112938,
   "broken_internal_links": 0,
-  "unique_titles": 6016,
-  "sitemap_urls": 6015,
+  "unique_titles": 6286,
+  "sitemap_urls": 6285,
   "regions": 32,
-  "public_records": 5972,
+  "public_records": 6242,
   "held_records_in_public_data": 0,
-  "site_records": 1602,
-  "entity_records": 605,
-  "service_form_records": 3765
+  "site_records": 1612,
+  "entity_records": 634,
+  "service_form_records": 3996
 }

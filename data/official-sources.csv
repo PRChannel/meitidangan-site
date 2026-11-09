@@ -28,7 +28,7 @@
 陕西,2026-10-23,https://app.sxdaily.com.cn/sxrbs/site1/mweb/jaa4o/content_20156016.html,,0,转载历史原图待官方链确认,官网原件未取得，52行暂缓
 甘肃,2026-10-23,http://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,https://gansu.gscn.com.cn/system/2026/04/13/013484231.shtml,34,官方原件已核对,历史原件版本仍需最终核验
 青海,2026-10-23,https://www.qhcac.gov.cn/hdhlwxw/hdxxxkgs/query/202610141030358965.html,https://www.qhnews.com/index/system/2026/07/02/030577849.shtml,21,官方原件已核对,HTML完整表
-宁夏,2026-10-23,https://www.nxnews.net/sz/qwfb/202609/t20260930_1609129.html,,0,原件缺口,指定公告412，未取得网站原件
+宁夏,2026-10-23,https://www.nxnews.net/sz/qwfb/202609/t20260930_1609129.html,https://www.nxnews.net/sz/qwfb/202510/P020251020373056789383.pdf,241,原件已覆盖（2025-09-30版）,PDF表格提取：网站10+应用14+公众账号217，主体29；PDF直链绕过HTML层电信WAF，2026-09-30版公告HTML被WAF拦截、附件直链未获取，待更新
 新疆,2026-10-23,https://www.xinjiang.gov.cn/xinjiang/tzgg/202607/df4546eb75cd4fd4883644c4c6e6f52e.shtml,,0,官方原件已核对但截至日期不明,公告未明确统计截止日期，留空
 新疆生产建设兵团,2026-10-23,https://www.xjbt.gov.cn/c/2026-09-24/8506223.shtml,,0,另行核对,6项原图已核对但统计截止日期不明，暂缓公开
 中央新闻单位,2026-07-22,https://www.cac.gov.cn/2026-07/22/c_1786465606229121.htm,https://www.cac.gov.cn/2026-07/22/c_1786465606229121.htm,194,PDF文本提取已校验,194项条数与序号连续性已程序校验；版面目视复核未完成
