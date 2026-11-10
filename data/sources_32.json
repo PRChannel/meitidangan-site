@@ -313,15 +313,15 @@
  },
  {
   "region": "陕西",
-  "source_url": "https://www.sxdaily.com.cn/2025-12/31/content_11475517.html",
+  "source_url": "https://www.sanqin.com/2026-10/16/content_20156353.html",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": null,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "679服务项（截至2026-10-01）",
+  "original_count_date": "2026-10-01",
+  "existing_records": 679,
+  "fetch_status": "fetched_ocr_verified",
+  "review_status": "verified_dated_official_record",
+  "notes": "三秦网2026-10-16转载公告5张JPEG长图边框网格OCR重建；正文口径138主体/679服务项与实际行数一致；公告无单独主体表不建主体；群众新闻网3域名rowspan还原"
  },
  {
   "region": "甘肃",
