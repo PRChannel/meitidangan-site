@@ -148,12 +148,12 @@
   "source_url": "https://fjnews.fjsen.com/2026-06/30/content_32210435.htm",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": null,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "120家主体/966服务项（截至2026-06-29）",
+  "original_count_date": "2026-06-29",
+  "existing_records": 986,
+  "fetch_status": "fetched_ocr_verified",
+  "review_status": "verified_dated_official_record",
+  "notes": "福建新闻网转载公告11张PNG长图边框网格OCR重建；六表行数与口径一致；网站101条中100条沿用早期已核记录并补缺1条；公告无9月版更新（截至本批核查）"
  },
  {
   "region": "江西",
