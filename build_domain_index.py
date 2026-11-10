@@ -90,6 +90,9 @@ def main():
     web = [r for r in records if r.get("registered_domains")]
     index = {}
 
+    def page_of(record_id):
+        return f"https://meitidangan.com/media/{record_id.lower()}/"
+
     for r in web:
         lic = r.get("license_number") or ""
         cats = sorted(cats_by_license.get(lic, []))
@@ -110,6 +113,7 @@ def main():
                 "authority": r.get("issuing_authority") or "",
                 "src": r.get("source_url") or "",
                 "listed_domain": d,
+                "page": page_of(r["record_id"]),
             })
 
     order = {"full": 0, "near_full": 1, "partial": 2, "outdated": 3, "unknown": 4}
@@ -124,6 +128,20 @@ def main():
         entry["coverage"] = max(
             (COVERAGE_LEVEL.get(r["region"], "unknown") for r in recs),
             key=lambda x: order.get(x, 4))
+        # 名单登记的全部完整主机名（含子域），供前端区分"精确命中"与"主域继承"
+        entry["hosts"] = sorted({r["listed_domain"].lower() for r in recs})
+        # 标签点击打开的详情页：优先取登记域名恰为主域/主站 www 的记录，否则取名单日期最新的一条
+        def pick_rank(r):
+            host = r["listed_domain"].lower()
+            if host == apex:
+                return 0
+            if host == "www." + apex:
+                return 1
+            return 2
+        pick = sorted(recs, key=lambda r: (-int(r["as_of"].replace("-", "") or 0), pick_rank(r)))[0]
+        entry["page"] = pick["page"]
+        entry["page_id"] = pick["id"]
+        entry["page_name"] = pick["name"]
 
     # 名称索引：归一名称 → 主域列表（报价页常只有媒体名，没有域名）
     name_index = defaultdict(set)
