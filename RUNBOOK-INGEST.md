@@ -32,7 +32,7 @@ python3 tools/diff_versions.py --base HEAD --head WORKTREE   # 确认当前工�
 
 ## 3. 长图 OCR 要点（踩过的坑）
 
-> 现状：核心 OCR 管线（rowocr5/rowocr6、各省装配脚本）此前放在临时目录、**未入库**；仓库里只有 `tools/ocr_table.py`（带坐标 OCR 结果→表格）、`tools/ocr_fix_cells.py`、`tools/ocr_image.swift` 等半套。下次改版前应先把管线固化为 `tools/pipeline/`，否则要从零重写。
+> 长图提取已固化为 **`tools/pipeline/`**（边框网格 → 格级 Vision OCR → 行装配 → 口径校验），用法见 `tools/pipeline/README.md`；本节是设计要点与已知边界。仓库另有 `tools/ocr_table.py`（带坐标 OCR→表格）、`tools/ocr_fix_cells.py`（单元格定点复 OCR）。
 
 - **边框网格法**：暗像素统计（阈值 >0.55）检出横竖分隔线 → 按格裁剪 OCR；逐行裁剪 + 放大 3 倍，优于整图 tile（tile 重叠会把同一串读两遍）。
 - **竖线不贯通**时改用逐行带检测（每行带内独立检测竖线），全图均值法会漏检。
