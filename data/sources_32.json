@@ -304,12 +304,12 @@
   "source_url": "https://www.xzxw.com/xw/xzyw/2026-10/09/content_6963544.html",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": 19,
+  "published_count_reference": "86家/466服务项（截至2026-09-30）",
   "original_count_date": "2026-09-30",
-  "existing_records": 19,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "existing_records": 466,
+  "fetch_status": "fetched_html_table_verified",
+  "review_status": "verified_dated_official_record",
+  "notes": "中国西藏新闻网页面公告正文含完整三表HTML（网站19按服务形式登记因原件无域名列+应用14+账号433），公告无单独主体表；86家由证号唯一集合推导与口径一致；附件链接失效但正文完整"
  },
  {
   "region": "陕西",
