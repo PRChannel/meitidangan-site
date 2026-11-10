@@ -364,12 +364,12 @@
   "source_url": "https://www.xinjiang.gov.cn/xinjiang/tzgg/202607/df4546eb75cd4fd4883644c4c6e6f52e.shtml",
   "url_origin": "existing_project_list",
   "index_page": "https://www.cac.gov.cn/2026-04/28/c_1779119758823184.htm",
-  "published_count_reference": null,
-  "original_count_date": null,
-  "existing_records": 0,
-  "fetch_status": "not_retested_in_this_package",
-  "review_status": "pending",
-  "notes": ""
+  "published_count_reference": "760服务项（公告落款2026-07-03）",
+  "original_count_date": "2026-07-03",
+  "existing_records": 760,
+  "fetch_status": "fetched_ocr_verified",
+  "review_status": "verified_dated_official_record",
+  "notes": "自治区政府网34张PNG边框网格OCR重建；低分辨率原件用2025-04版文字全文交叉印证+同证号投票修复；公告未写统计截止日期以落款为准；无单独主体表"
  },
  {
   "region": "新疆生产建设兵团",
