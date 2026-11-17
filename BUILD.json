@@ -10,13 +10,26 @@
   "public_provinces": 31,
   "source_coverage_provinces": 31,
   "original_missing_provinces": 0,
+  "industry": {
+    "records": 197,
+    "tier_l1": 115,
+    "tier_l2": 82,
+    "indexed_domains": 172,
+    "with_domain": 177,
+    "without_domain": 20,
+    "licensed_overlap": 64,
+    "sectors": 16,
+    "sub_industries": 118,
+    "verified_at": "2026-11-17",
+    "separate_from_license_records": true
+  },
   "national_reference": {
     "as_of": "2026-09-30",
     "total_units": 3657,
     "total_service_items": 26686,
     "source_url": "https://www.cac.gov.cn/2026-10/23/c_1794509036894710.htm"
   },
-  "html_pages": 26011,
+  "html_pages": 26209,
   "search_page_size": 25,
   "domain": "https://meitidangan.com",
   "current_validity": "not_independently_confirmed",
