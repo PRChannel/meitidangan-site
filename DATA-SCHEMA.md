@@ -111,3 +111,22 @@
 |---|---|---|
 | 1.0 | 2026-10 | 初始 schema：主体/服务/网站三类记录，含证据哈希与版本日期 |
 | — | 2026-11-10 | 补全域名（西藏 19 条）、网站记录 100% 含域名；本文件建立 |
+
+## 7. 行业媒体收录层（独立数据层）
+
+许可名单之外的第二个数据层，**与许可记录互不合并、记录数不相加**。
+
+- 源数据：`data/industry-media.csv`（UTF-8 BOM），字段 `id,tier,name,sector,industry,domain,http_status,licensed,note,source`。
+- 编号规则：`IM-L1-xxx`（全国性行业类媒体，中国行业报协会体系口径 115 家）/ `IM-L2-xxx`（行业垂直媒体，运营方目录+人工整理）。编号与域名解耦——媒体换域名时改 `domain` 字段，编号不变。
+- `sector` 为一级行业（16 类，固定枚举，筛选与对外判断用）；`industry` 为细分行业（自由文本，仅展示）。
+- `http_status`：`ok(200)` / `waf_blocked`（域名经权威源确认、站点拦境外）/ `unverified`（当前 502 或反爬，**不入对外索引**）/ 空（无独立官网，`note` 说明依托渠道）。
+- 许可交叉标注在构建时实时计算（`build_site.py` 内 apex 归一后比对网站记录），CSV 中的 `licensed` 列仅作参考，以构建结果为准。
+- 构建产物：`docs/industry/`（列表页）+ `docs/industry/im-xxx-xxx/`（197 个记录页）+ 三个对外 JSON：
+  - `data/industry-index-lite.json`：`domains: {域名: [名称, 行业, 层级]}`，与早期交付格式完全一致（存量消费方无需改动）；
+  - `data/industry-index.json`：`domains: {域名: {name, sector, industry, tier, page, licensed}}`，推荐消费方使用；
+  - `data/industry.json`：全部 197 条记录明细（含未入索引的待核与无域名条目）。
+- 更新流程：改 `data/industry-media.csv` → 同步修改 `build_site.py` 内 `IND_DATE` 常量 → 三关构建校验 → 提交。新增 `sector` 枚举值时同步本文件。
+
+| 版本 | 日期 | 内容 |
+|---|---|---|
+| — | 2026-11-17 | 行业媒体收录层上线：197 家（L1 115 / L2 82），172 域名索引，与许可记录交叉标注 64 家 |
