@@ -32,7 +32,8 @@ SECTORS = {
     # 7 个发稿树装不下的补充类
     "工业制造", "建筑基建", "交通物流", "农业养殖", "政务公益", "政法法治", "军事国防",
 }
-FIELDS = ["id", "tier", "name", "sector", "industry", "domain", "http_status", "licensed", "note", "source"]
+FIELDS = ["id", "tier", "name", "sector", "industry", "domain", "http_status", "licensed", "quality", "note", "source"]
+QUALITY = {"core", "platform", "watch"}  # core=行业垂直重点媒体 platform=平台型社区 watch=待核（不入对外索引）
 
 
 def norm_name(name: str) -> str:
@@ -68,6 +69,10 @@ def main():
             domain = (it.get("domain") or "").strip().lower().removeprefix("https://").removeprefix("http://").strip("/")
             domain = domain.removeprefix("www.")
             sector = (it.get("sector") or "").strip()
+            quality = (it.get("quality") or "core").strip()
+            if quality not in QUALITY:
+                bad_sector.append((name, "quality=" + quality))
+                continue
             if not name:
                 continue
             if sector not in SECTORS:

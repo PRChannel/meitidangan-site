@@ -137,7 +137,9 @@ python3 tools/update_media.py set-domain --rid CN-XX-...-WEB-n \
 
 许可名单之外的第二个数据层，**与许可记录互不合并、记录数不相加**。
 
-- 源数据：`data/industry-media.csv`（UTF-8 BOM），字段 `id,tier,name,sector,industry,domain,http_status,licensed,note,source`。
+- 源数据：`data/industry-media.csv`（UTF-8 BOM），字段 `id,tier,name,sector,industry,domain,http_status,licensed,quality,traffic_baidu,traffic_checked_at,note,source`。
+- **`quality` 质量分级（2026-11-18 起）**：`core`=行业垂直重点媒体（进对外索引与站点）、`platform`=平台型社区（CSDN/虎扑/雪球等 UGC 或开发者社区，站点单列、不进对外索引）、`watch`=待核（无实测搜索流量且非业内公认品牌，移出对外索引，保留在 CSV 供复核）。判据：百度预估日均 IP ≥ 300，或属业内公认品牌白名单（`tools/classify_quality.py` 内维护）。L1 中国行业报协会 115 家全部 core，不受流量影响。
+- **`traffic_baidu` / `traffic_checked_at`**：爱站（aizhan.com）百度预估日均 IP 中值与核验日期，仅作流量参考。只反映百度自然搜索流量，内容平台型媒体（公众号/APP 为主）会被低估，0 或不代表站点无受众。
 - 编号规则：`IM-L1-xxx`（全国性行业类媒体，中国行业报协会体系口径 115 家）/ `IM-L2-xxx`（行业垂直媒体，运营方目录+人工整理）。编号与域名解耦——媒体换域名时改 `domain` 字段，编号不变。
 - `sector` 为一级行业（25 类，2026-11-18 起对齐发稿平台常用行业树：IT科技/财经金融/新闻资讯/健康医疗/汽车行业/留学教育/家装家居/房产行业/生活消费/酒店旅游/女性时尚/游戏行业/娱乐影视/文化艺术/亲子母婴/贸易能源/食品餐饮/体育运动 + 工业制造/建筑基建/交通物流/农业养殖/政务公益/政法法治/军事国防，筛选与对外判断用）；`industry` 为细分行业（自由文本，仅展示）。
 - `http_status`：`ok(200)` / `waf_blocked`（域名经权威源确认、站点拦境外）/ `unverified`（当前 502 或反爬，**不入对外索引**）/ 空（无独立官网，`note` 说明依托渠道）。
