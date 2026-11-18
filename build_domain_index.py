@@ -199,6 +199,20 @@ def main():
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     (OUT_DIR / "domain-index.json").write_text(blob, encoding="utf-8")
     (ROOT / "data" / "domain-index.json").write_text(blob, encoding="utf-8")
+
+    # 轻量索引（epr-domain-lite/1）：apex → [apex, 记录页]，供暗传播报价页跨域直连。
+    # 随本脚本每次构建自动重生成，保证媒体档案更新后暗传播侧零维护同步。
+    lite = {
+        "schema": "epr-domain-lite/1",
+        "generated_at": payload["generated_at"],
+        "domains": {
+            a: [a, v["records"][0]["page"]]
+            for a, v in sorted(index.items()) if v["records"] and v["records"][0].get("page")
+        },
+    }
+    lite_blob = json.dumps(lite, ensure_ascii=False, separators=(",", ":"))
+    (OUT_DIR / "domain-index-lite.json").write_text(lite_blob, encoding="utf-8")
+    (ROOT / "data" / "domain-index-lite.json").write_text(lite_blob, encoding="utf-8")
     (OUT_DIR / "coverage-levels.json").write_text(
         json.dumps({"generated_at": payload["generated_at"],
                     "levels": COVERAGE_LEVEL,
