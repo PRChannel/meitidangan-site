@@ -96,12 +96,15 @@ def main():
     for r in web:
         lic = r.get("license_number") or ""
         cats = sorted(cats_by_license.get(lic, []))
-        for d in r["registered_domains"]:
+        listed_apexes = set()
+
+        def add_domain(d, unlisted=False):
             apex = apex_of(d)
+            listed_apexes.add(apex)
             entry = index.setdefault(apex, {
                 "apex": apex, "live": "", "records": [],
             })
-            entry["records"].append({
+            rec = {
                 "id": r["record_id"],
                 "name": r.get("name") or "",
                 "license": lic,
@@ -114,7 +117,19 @@ def main():
                 "src": r.get("source_url") or "",
                 "listed_domain": d,
                 "page": page_of(r["record_id"]),
-            })
+            }
+            if unlisted:
+                # alt_domains：名单未印、媒体实际使用的域名（经站点标题/跳转核验）。
+                # 资质判定不受影响：该域名是持证媒体的实际运营域名。
+                rec["unlisted"] = True
+            entry["records"].append(rec)
+
+        for d in r["registered_domains"]:
+            add_domain(d)
+        # 实际使用域名：apex 与登记域名不同时补进索引，供按域名判定时命中
+        for d in r.get("alt_domains") or []:
+            if apex_of(d) not in listed_apexes:
+                add_domain(d, unlisted=True)
 
     order = {"full": 0, "near_full": 1, "partial": 2, "outdated": 3, "unknown": 4}
     for apex, entry in index.items():
@@ -165,7 +180,8 @@ def main():
             "name_key_count": len(name_index),
             "note": "仅收录经省级网信办公告原件核对的互联网新闻信息服务许可记录。"
                     "未命中不等于无资质：须结合该省 coverage 等级（full 才可视为该版本内未列入）。"
-                    "categories 为'未载明'时，表示该省名单未列服务类别，不代表无采编资质。",
+                    "categories 为'未载明'时，表示该省名单未列服务类别，不代表无采编资质。"
+                    "records 中 unlisted=true 的条目为名单未印但经核验的媒体实际使用域名（如媒体改版换域），资质归属相同。",
         },
         "coverage_legend": {
             "full": "该省最新版公告全部分项已全量提取，可据以判定未列入",

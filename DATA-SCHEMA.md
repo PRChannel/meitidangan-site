@@ -81,10 +81,30 @@
 ## 4. 域名约定
 
 - `registered_domains` 保留**名单登记写法**（多为裸域，如 `bjd.com.cn`，站点常只在 `www.` 下服务）。
+- **`alt_domains`（实际使用域名，可选字段，2026-11-18 起）**：名单未印、但经核验为该持证媒体实际使用的域名（典型：媒体改版换域，如潮新闻登记 `www.tianmunews.com`、实际使用 `tidenews.com.cn`）。登记域名照抄名单原文**不动**；`alt_domains_note` 记录核验依据与日期。`build_domain_index.py` 会把 alt 域名的 apex（与登记域不同时）补进索引，条目带 `unlisted: true`，资质判定与登记域名条目完全相同。
 - 主域归一在 `build_domain_index.py` 内完成，**不在源数据里改**：`.com.cn` / `.gov.cn` / `.org.cn` 等按中国二级后缀表处理，避免把 `bjd.com.cn` 截成 `com.cn`。
 - 中文域名（`.公益` 等，3 条）按原件保留，不转 punycode。
 - 同一域名可对应多条记录（如 `xfjw.net` 3 条），**不合并**。
 - `meitidangan.com` 自身不入库、不入索引。
+
+## 4b. 单媒体维护（个别记录的增改）
+
+批量入库走 `ingest_province_rows.py` / `ingest_cac_records.py`；行业媒体单条走 `import_industry.py`（单行 JSON）。**个别已有记录的修正**走 `tools/update_media.py`：
+
+```bash
+# 查找记录，确认 rid
+python3 tools/update_media.py find 潮新闻
+
+# 场景 A：媒体换域名（登记域名不动，补记实际使用域名）
+python3 tools/update_media.py add-alt --rid CN-ZJ-202606-WEB-105 \
+  --domain tidenews.com.cn --method "首页标题+301跳转核验" --write
+
+# 场景 B：修正当时 OCR/录入读错（须 --note 写明核验依据，旧值自动留痕 domain_correction）
+python3 tools/update_media.py set-domain --rid CN-XX-...-WEB-n \
+  --domain 正确域名 --note "原图放大复读确认" --write
+```
+
+两个子命令都先预览、加 `--write` 才落盘。`list_as_of` / 来源 / 证据字段**不由本工具修改**——那是名单版本的事实；换名单版本走批量入库。改完必须过三关（见"改版规则"）。
 
 ## 5. 覆盖口径（`data/coverage.json`）
 
@@ -111,6 +131,7 @@
 |---|---|---|
 | 1.0 | 2026-10 | 初始 schema：主体/服务/网站三类记录，含证据哈希与版本日期 |
 | — | 2026-11-10 | 补全域名（西藏 19 条）、网站记录 100% 含域名；本文件建立 |
+| — | 2026-11-18 | 新增可选字段 `alt_domains`/`alt_domains_note`（实际使用域名）；域名索引补录 unlisted 条目；新增 `tools/update_media.py` 单媒体维护工具 |
 
 ## 7. 行业媒体收录层（独立数据层）
 

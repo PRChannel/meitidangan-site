@@ -52,8 +52,8 @@ IND_WITH_DOMAIN=[r for r in IND_ROWS if r['domain']]
 IND_INDEX_ROWS=[r for r in IND_WITH_DOMAIN if r['http_status'].split('(')[0]!='unverified']
 _lic_apex=collections.defaultdict(list)
 for _r in SITES:
- for _d in _r['registered_domains']:
-  _lic_apex[apex_of(_d)].append(_r)
+ for _d in _r['registered_domains']+list(_r.get('alt_domains') or []):
+  if _r not in _lic_apex[apex_of(_d)]:_lic_apex[apex_of(_d)].append(_r)
 def _dkey(s):return tuple(-int(x) for x in (re.findall(r'\d+',s) or ['0']))
 def lic_of(ind):
  """行业媒体主域 → 许可名单记录，仅作交叉标注，两套记录不合并。"""
@@ -143,7 +143,7 @@ def row(r,p=''):
   search=' '.join([r['name'],r['region'],r['license_number'],form,r['operator_name'] or '','其他服务形式'])
  else:
   mid=f"<code>{esc(r['registered_addresses_raw']).replace(chr(10),'<br>')}</code>"
-  search=' '.join([r['name'],r['region'],r['license_number'],r['registered_addresses_raw'],r['operator_name'] or '','网站服务'])
+  search=' '.join([r['name'],r['region'],r['license_number'],r['registered_addresses_raw'],r['operator_name'] or '','网站服务']+[d for d in (r.get('alt_domains') or [])])
  return f'''<tr data-region="{esc(r['region'])}" data-kind="{kind(r)}" data-search="{esc(search)}"><td><a href="{p}{route}">{esc(r['name'])}</a><small>{esc(r['region'])} · {esc(ev_short(r))}</small></td><td>{mid}</td><td><code>{r['license_number']}</code></td><td>{esc(r['list_as_of'])}</td><td><a class="text-link" href="{p}{route}">查看记录</a></td></tr>'''
 THEAD='<thead><tr><th scope="col">服务名称</th><th scope="col">登记地址 / 服务类别 / 服务形式</th><th scope="col">许可证编号</th><th scope="col">名单统计截至</th><th scope="col">证据与详情</th></tr></thead>'
 def table(rs,p=''):
@@ -190,6 +190,8 @@ for r in records:
   fields=[('服务名称',r['name']),('服务形式',form),('名单标注单位',r['operator_name'] or '该表未列单位名称'),('许可证编号',r['license_number']),('登记地址',r.get('registered_addresses_raw') or '该表未列服务地址（应用与账号类名单只列名称与单位）'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
  else:
   fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
+  if r.get('alt_domains'):fields.append(('实际使用域名','、'.join(r['alt_domains'])))
+  if r.get('alt_domains_note'):fields.append(('域名变更说明',r['alt_domains_note']))
  fields_html=''.join(f'<div class="field"><dt>{esc(k)}</dt><dd>{esc(v).replace(chr(10),"<br>")}</dd></div>' for k,v in fields)
  dup_note=''
  if dup_key[(r['name'],r['license_number'])]>1:
@@ -211,7 +213,8 @@ for r in records:
   write(route,dtitle+' '+r['license_number'],f"{r['name']}，{form}类互联网新闻信息服务项，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
  else:
   schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+' 网站许可名单版本记录','url':DOMAIN+'/'+route,'description':f"网站登记地址及编号，名单截至{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
-  write(route,dtitle+' '+r['registered_domains'][0],f"{r['name']}，登记地址{r['registered_addresses_raw']}，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
+  _dtitles=' '.join([r['registered_domains'][0]]+list(r.get('alt_domains') or []))
+  write(route,dtitle+' '+_dtitles,f"{r['name']}，登记地址{r['registered_addresses_raw']}，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
 for i,x in enumerate(coverage,1):
  allrs=[r for r in records if r['region']==x['省份']]
  sites=[r for r in allrs if kind(r)=='website'];ents=[r for r in allrs if kind(r)=='entity'];forms=[r for r in allrs if kind(r)=='service']
