@@ -122,6 +122,7 @@ python3 tools/update_media.py set-domain --rid CN-XX-...-WEB-n \
 1. **只增字段不删**；必须删改时 `schema_version` 升次版本（1.0 → 1.1），并在本文件"变更记录"登记。
 2. 改前先跑 `python3 tools/diff_versions.py --base HEAD~1 --head WORKTREE`，确认差异符合预期（新增/移除/域名变化/字段变化），再入库。
 3. 改后必须过三关：`build_site.py` → `build_domain_index.py` → `tools/validate_site.py`。
+- 对外轻量索引 `docs/data/domain-index-lite.json`（schema `epr-domain-lite/1`：apex → [apex, 记录页]，约 20KB gzip）由 `build_domain_index.py` 每次构建自动重生成，供暗传播报价页跨域直连（GitHub Pages 自带 `Access-Control-Allow-Origin: *`）；字段格式不再变更，只随数据更新内容。
 4. 对外接口（`docs/data/domain-index.json`）字段**只增不改名**；新增字段一律可选、缺省不影响旧消费方。
 5. 任何"口径"层面的变化（谁能算、算什么、按哪一版），同步更新 `coverage.json` 的 `当前完整有效性结论` 与页面文案，不能只改数据。
 
