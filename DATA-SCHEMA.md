@@ -139,7 +139,7 @@ python3 tools/update_media.py set-domain --rid CN-XX-...-WEB-n \
 
 - 源数据：`data/industry-media.csv`（UTF-8 BOM），字段 `id,tier,name,sector,industry,domain,http_status,licensed,note,source`。
 - 编号规则：`IM-L1-xxx`（全国性行业类媒体，中国行业报协会体系口径 115 家）/ `IM-L2-xxx`（行业垂直媒体，运营方目录+人工整理）。编号与域名解耦——媒体换域名时改 `domain` 字段，编号不变。
-- `sector` 为一级行业（16 类，固定枚举，筛选与对外判断用）；`industry` 为细分行业（自由文本，仅展示）。
+- `sector` 为一级行业（25 类，2026-11-18 起对齐发稿平台常用行业树：IT科技/财经金融/新闻资讯/健康医疗/汽车行业/留学教育/家装家居/房产行业/生活消费/酒店旅游/女性时尚/游戏行业/娱乐影视/文化艺术/亲子母婴/贸易能源/食品餐饮/体育运动 + 工业制造/建筑基建/交通物流/农业养殖/政务公益/政法法治/军事国防，筛选与对外判断用）；`industry` 为细分行业（自由文本，仅展示）。
 - `http_status`：`ok(200)` / `waf_blocked`（域名经权威源确认、站点拦境外）/ `unverified`（当前 502 或反爬，**不入对外索引**）/ 空（无独立官网，`note` 说明依托渠道）。
 - 许可交叉标注在构建时实时计算（`build_site.py` 内 apex 归一后比对网站记录），CSV 中的 `licensed` 列仅作参考，以构建结果为准。
 - 构建产物：`docs/industry/`（列表页）+ `docs/industry/im-xxx-xxx/`（197 个记录页）+ 三个对外 JSON：
