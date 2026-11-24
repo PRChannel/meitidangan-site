@@ -25,13 +25,27 @@
     "verified_at": "2026-11-18",
     "separate_from_license_records": true
   },
+  "traffic": {
+    "records": 82,
+    "tier_s": 12,
+    "tier_a": 25,
+    "tier_b": 45,
+    "indexed_domains": 82,
+    "overlap_with_industry": 32,
+    "overlap_with_license": 4,
+    "verified_at": "2026-11-24",
+    "data_source": "第三方实测（爱站/站长之家）",
+    "separate_from_license_records": true,
+    "separate_from_industry_records": true,
+    "not_qualification_evidence": true
+  },
   "national_reference": {
     "as_of": "2026-09-30",
     "total_units": 3657,
     "total_service_items": 26686,
     "source_url": "https://www.cac.gov.cn/2026-10/23/c_1794509036894710.htm"
   },
-  "html_pages": 29400,
+  "html_pages": 29401,
   "search_page_size": 25,
   "domain": "https://meitidangan.com",
   "current_validity": "not_independently_confirmed",
