@@ -43,14 +43,17 @@ with (ROOT/'data/industry-media.csv').open(encoding='utf-8-sig',newline='') as f
  IND_ROWS=[r for r in csv.DictReader(f) if (r.get('id') or '').strip()]
 assert IND_ROWS and len({r['id'] for r in IND_ROWS})==len(IND_ROWS),'行业媒体记录编号重复'
 assert all(r['tier'] in ('L1','L2') for r in IND_ROWS),'行业媒体层级异常'
-# 质量分级（2026-11-18 起）：core=行业垂直重点媒体；platform=平台型社区单列；watch=待核，不进对外索引
+# 质量分级（2026-11-18 起）：core=行业垂直重点媒体；platform=平台型社区单列；watch=待核
+# 2026-11-24 起三级全部进对外索引（此前仅 core），索引条目带 quality 字段区分证明力；
+# 后台按分级显示不同标签，避免"库里有、报价页却不提示"的漏提示问题。
 assert all(r.get('quality','core') in ('core','platform','watch') for r in IND_ROWS),'行业媒体质量分级非法'
 IND_CORE=[r for r in IND_ROWS if r.get('quality','core')=='core']
 IND_PLATFORM=[r for r in IND_ROWS if r.get('quality')=='platform']
 IND_WATCH=[r for r in IND_ROWS if r.get('quality')=='watch']
-IND_SHOWN=IND_CORE+IND_PLATFORM
+IND_SHOWN=IND_CORE+IND_PLATFORM+IND_WATCH
 IND_TOTAL=len(IND_CORE)
 IND_PLAT_N=len(IND_PLATFORM)
+IND_WATCH_N=len(IND_WATCH)
 IND_TIER=collections.Counter(r['tier'] for r in IND_SHOWN)
 assert all(r.get('sector') for r in IND_SHOWN),'行业媒体缺少一级行业'
 IND_INDUSTRIES=sorted({r['industry'] for r in IND_SHOWN if r['industry']})
@@ -60,8 +63,9 @@ for _r in IND_SHOWN:
  if _r['industry']:IND_SUBS[_r['sector']].add(_r['industry'])
 IND_DATE='2026-11-18'  # 行业收录层最近一次核验日期，随 data/industry-media.csv 更新
 IND_WITH_DOMAIN=[r for r in IND_SHOWN if r['domain']]
-# 对外索引只收 core：平台型社区与待核站点不进域名比对索引
-IND_INDEX_ROWS=[r for r in IND_CORE if r['domain'] and r['http_status'].split('(')[0]!='unverified']
+# 对外索引收全部三级（core/platform/watch），条目带 quality 供后台区分标签；
+# 只排除无域名与域名未核验者（unverified 无法做域名比对）。
+IND_INDEX_ROWS=[r for r in IND_SHOWN if r['domain'] and r['http_status'].split('(')[0]!='unverified']
 _lic_apex=collections.defaultdict(list)
 for _r in SITES:
  for _d in _r['registered_domains']+list(_r.get('alt_domains') or []):
@@ -77,7 +81,7 @@ def lic_of(ind):
   return (0 if a in hosts else 1,_dkey(x['list_as_of']),x['record_id'])
  return sorted(cands,key=rank)[0]
 STATUS_LABEL={'ok':'站点可达','waf_blocked':'域名有效，站点拦境外访问','unverified':'待复核（当前不可访问）'}
-QUALITY_LABEL={'core':'行业垂直重点媒体','platform':'平台型社区'}
+QUALITY_LABEL={'core':'行业垂直重点媒体','platform':'平台型社区','watch':'待核·行业属性未确认'}
 def ind_status(r):
  if not r['domain']:return '无独立官网'
  return STATUS_LABEL.get(r['http_status'].split('(')[0],'未核验')
@@ -319,7 +323,7 @@ def ind_row(r):
 indbody=pagehead('行业媒体收录',f'独立于许可名单的行业媒体索引：{IND_TOTAL}家行业媒体（全国性行业类媒体{IND_TIER["L1"]}家、行业垂直{IND_TIER["L2"]}家），另有{IND_PLAT_N}家平台型社区单列；{len(IND_INDEX_ROWS)}个主域可用于域名比对。收录不代表新闻资质认定。','INDUSTRY MEDIA INDEX','industry/')
 indbody+='<div class="note">这一层回答「这条媒体资源属于哪个行业」，不回答「有没有新闻资质」。许可事实只以媒体查询中的名单记录为准；两套数据分别存储、分别标注、不相加。未收录的域名同样不代表没有新闻资质。</div>'
 indbody+=f'''<div class="stats"><div class="stat"><span>收录行业媒体</span><strong>{IND_TOTAL}</strong><span>全国性 {IND_TIER["L1"]} 家 · 垂直 {IND_TIER["L2"]} 家</span></div><div class="stat"><span>可比对主域</span><strong>{len(IND_INDEX_ROWS)}</strong><span>已做域名核验</span></div><div class="stat"><span>覆盖一级行业</span><strong>{len(IND_SECTORS)}</strong><span>IT科技、财经金融、健康医疗等</span></div><div class="stat"><span>同时见于许可名单</span><strong>{IND_MATCH_N}</strong><span>两套记录独立展示</span></div><div class="stat"><span>平台型社区单列</span><strong>{IND_PLAT_N}</strong><span>UGC/开发者社区，不混入行业媒体</span></div></div>'''
-indbody+=f'''<form id="industry-form" class="filters filters-wide" action="./"><label>媒体名称或域名<input id="ind-query" name="q" aria-label="媒体名称或域名" autocomplete="off"></label><label>行业分类<select id="ind-industry" name="industry"><option value="">全部行业</option>{''.join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in IND_SECTORS)}</select></label><label>收录性质<select id="ind-quality" name="quality"><option value="">全部</option><option value="core">行业媒体</option><option value="platform">平台型社区</option></select></label><label>收录层级<select id="ind-tier" name="tier"><option value="">全部层级</option><option value="L1">全国性行业类媒体</option><option value="L2">行业垂直媒体</option></select></label><label>许可名单<select id="ind-lic" name="lic"><option value="">全部</option><option value="yes">同时见于许可名单</option><option value="no">未见于许可名单</option></select></label><button class="btn" type="submit">查询</button><button class="btn-light" type="button" id="ind-reset">重置</button></form><div class="resultmeta"><span id="ind-count">共{IND_TOTAL}家行业媒体</span><span>索引更新：{IND_DATE}</span></div><div class="tablebox" id="ind-table"><table>{IND_THEAD}<tbody id="ind-body">{''.join(ind_row(r) for r in IND_SHOWN)}</tbody></table></div><div id="ind-empty" class="empty" hidden>未找到符合条件的行业媒体。未收录不代表该媒体没有新闻资质，也不代表站点不存在，可到<a class="text-link" href="../directory/">媒体查询</a>核对许可名单记录。</div><div id="ind-pagination" class="pagination" hidden><button id="ind-prev" class="btn-light" type="button">上一页</button><span id="ind-page-label" class="meta"></span><button id="ind-next" class="btn-light" type="button">下一页</button></div><noscript><p class="note">当前浏览器未运行筛选脚本，下面保留完整名录，可使用浏览器查找功能检索。</p></noscript>'''
+indbody+=f'''<form id="industry-form" class="filters filters-wide" action="./"><label>媒体名称或域名<input id="ind-query" name="q" aria-label="媒体名称或域名" autocomplete="off"></label><label>行业分类<select id="ind-industry" name="industry"><option value="">全部行业</option>{''.join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in IND_SECTORS)}</select></label><label>收录性质<select id="ind-quality" name="quality"><option value="">全部</option><option value="core">行业媒体</option><option value="platform">平台型社区</option><option value="watch">待核</option></select></label><label>收录层级<select id="ind-tier" name="tier"><option value="">全部层级</option><option value="L1">全国性行业类媒体</option><option value="L2">行业垂直媒体</option></select></label><label>许可名单<select id="ind-lic" name="lic"><option value="">全部</option><option value="yes">同时见于许可名单</option><option value="no">未见于许可名单</option></select></label><button class="btn" type="submit">查询</button><button class="btn-light" type="button" id="ind-reset">重置</button></form><div class="resultmeta"><span id="ind-count">共{IND_TOTAL}家行业媒体</span><span>索引更新：{IND_DATE}</span></div><div class="tablebox" id="ind-table"><table>{IND_THEAD}<tbody id="ind-body">{''.join(ind_row(r) for r in IND_SHOWN)}</tbody></table></div><div id="ind-empty" class="empty" hidden>未找到符合条件的行业媒体。未收录不代表该媒体没有新闻资质，也不代表站点不存在，可到<a class="text-link" href="../directory/">媒体查询</a>核对许可名单记录。</div><div id="ind-pagination" class="pagination" hidden><button id="ind-prev" class="btn-light" type="button">上一页</button><span id="ind-page-label" class="meta"></span><button id="ind-next" class="btn-light" type="button">下一页</button></div><noscript><p class="note">当前浏览器未运行筛选脚本，下面保留完整名录，可使用浏览器查找功能检索。</p></noscript>'''
 indbody+='''<section class="section"><div class="section-head"><div><div class="kicker">SOURCES &amp; SCOPE</div><h2>收录来源与边界</h2></div></div><div class="copy"><h2>两层来源</h2><p><strong>全国性行业类媒体</strong>按中国记协主管的中国行业报协会体系口径收录，共115家，逐条核对名称与主办单位；<strong>行业垂直媒体</strong>按运营方媒体目录与公开信息整理，服务于报价环节的行业识别。两层都在记录页逐条标注来源。</p><h2>与许可名单的关系</h2><p>两套数据来源不同、证明力不同：许可记录来自网信办公布的名单原件，行业收录来自行业组织名单与编辑整理。同一主域在两套数据中都出现时，页面只做交叉标注并给出链接，不合并成一条记录，也不把行业收录当作资质证明。</p><h2>已知边界</h2><p>省级行业媒体、行业期刊与平台型社区尚未系统收录；域名核验只证明站点当时可达，不证明内容归属或经营状况；收录结果会随媒体改名、域名迁移而变化，后续按季度复检。</p><h2>对外数据</h2><p>需要做域名比对时，可下载<a class="text-link" href="../data/industry-index-lite.json">精简索引（域名→名称/行业/层级）</a>或<a class="text-link" href="../data/industry-index.json">完整索引（含记录页地址与许可交叉标记）</a>；逐条明细见<a class="text-link" href="../data/industry.json">行业媒体收录数据</a>。</p></div></section>'''
 write('industry/','行业媒体收录',f'独立于许可名单的行业媒体索引，收录{IND_TOTAL}家全国性行业类媒体与行业垂直媒体，按主域比对识别行业归属；收录不代表新闻资质认定。',indbody,'industry')
 for r in IND_SHOWN:
@@ -347,14 +351,15 @@ ind_records=[]
 for r in IND_SHOWN:
  m=lic_of(r)
  ind_records.append({'id':r['id'],'name':r['name'],'tier':r['tier'],'quality':r.get('quality','core'),'sector':r['sector'],'industry':r['industry'],'domain':r['domain'],'http_status':r['http_status'],'status':ind_status(r),'traffic_baidu':(int(r['traffic_baidu']) if r.get('traffic_baidu') else None),'traffic_checked_at':r.get('traffic_checked_at') or '','note':r['note'],'source':r['source'],'licensed_record':({'record_id':m['record_id'],'name':m['name'],'list_as_of':m['list_as_of'],'page':DOMAIN+'/'+rec_route(m)} if m else None),'page':DOMAIN+'/industry/'+r['id'].lower()+'/'})
-ind_note='行业媒体收录索引：domain → [媒体名称, 行业分类, 层级]。L1=全国性行业类媒体（中国行业报协会体系口径），L2=行业垂直媒体（运营方媒体目录与公开信息整理）。与新闻资质索引(domain-index)来源不同、证明力不同，不得互相替代；未收录不代表无资质。'
+ind_note='行业媒体收录索引：domain → [媒体名称, 行业分类, 层级, 质量分级]。L1=全国性行业类媒体（中国行业报协会体系口径），L2=行业垂直媒体（运营方媒体目录与公开信息整理）。质量分级 quality：core=行业垂直重点媒体，platform=平台型社区（UGC/开发者社区），watch=待核（行业属性未确认，仅作提示不作认定）。三级均已进索引以便报价环节识别，但证明力不同，不得当作新闻资质；与新闻资质索引(domain-index)来源不同、证明力不同，不得互相替代；未收录不代表无资质。'
 (OUT/'data'/'industry.json').write_text(json.dumps({'schema':'meitidangan-industry/1','generated_at':IND_DATE,'note':ind_note,'records':ind_records},ensure_ascii=False,indent=1),encoding='utf-8')
 _lite={};_full={}
 for r in IND_INDEX_ROWS:
  d=r['domain']
  if d in _lite:continue
- _lite[d]=[r['name'],r['industry'],r['tier']]
- _full[d]={'name':r['name'],'sector':r['sector'],'industry':r['industry'],'tier':r['tier'],'page':DOMAIN+'/industry/'+r['id'].lower()+'/','licensed':bool(lic_of(r)),'traffic_baidu':(int(r['traffic_baidu']) if r.get('traffic_baidu') else None)}
+ _q=r.get('quality','core')
+ _lite[d]=[r['name'],r['industry'],r['tier'],_q]
+ _full[d]={'name':r['name'],'sector':r['sector'],'industry':r['industry'],'tier':r['tier'],'quality':_q,'page':DOMAIN+'/industry/'+r['id'].lower()+'/','licensed':bool(lic_of(r)),'traffic_baidu':(int(r['traffic_baidu']) if r.get('traffic_baidu') else None)}
 (OUT/'data'/'industry-index-lite.json').write_text(json.dumps({'schema':'epr-industry-lite/1','generated_at':IND_DATE,'note':ind_note,'domains':_lite},ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 (OUT/'data'/'industry-index.json').write_text(json.dumps({'schema':'meitidangan-industry-index/1','generated_at':IND_DATE,'note':ind_note,'domains':_full},ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 
