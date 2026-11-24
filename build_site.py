@@ -21,7 +21,8 @@ assert all(r['registered_domains'] for r in SITES),'存在缺少域名的网站�
 assert all(not r['registered_domains'] for r in ENTITIES+FORMS),'主体与服务形式记录不应带域名'
 assert all(r.get('service_form') for r in FORMS),'服务形式记录缺少 service_form'
 # 湖南2026-09-30版公告有5行证号原件即印为10位（4312018000），按原件保留
-assert all(re.fullmatch(r'\d{10,11}',r['license_number']) for r in records),'许可证号格式异常'
+# 河北廊坊新闻网为地方新闻发布许可证实证补充（冀新网备132007012），单列标注，不与网信办许可混同
+assert all(re.fullmatch(r'\d{10,11}|冀新网备\d{9}',r['license_number']) for r in records),'许可证号格式异常'
 assert all(urlparse(r['source_url']).scheme in ('http','https') for r in records),'来源地址异常'
 # 统计口径全部由数据推导，避免改条数时漏改文案
 N=len(records)
@@ -146,6 +147,8 @@ def ev_meta(r):
   return ('图片名单OCR提取+表格重建','本记录来自省级网信办公布的图片版名单，经本地OCR识别与表格重建，条数与名单标注核对一致；该类名单只列服务名称与标注单位，不含可核验的服务地址，因此无法做域名或链接层面的核验。如发现错误，请通过纠错渠道反馈。')
  if m=='official_attachment_text_extraction':
   return ('官方附件表格文本提取','本记录来自省级网信办公告附件中的电子表格（xls/xlsx），以文本方式直接提取、未经OCR，登记信息与原件零转写差异；已用程序校验条数与名单标注一致。个别登记域名当前可能已改版或暂停解析，不代表登记信息有误。如发现错误，请通过纠错渠道反馈。')
+ if m=='official_site_footer_local_press_permit_verified':
+  return ('官网页脚资质实证（地方许可）','本记录来自媒体官网首页页脚印载的新闻发布许可证号、备案号与运营主体，核验当日站点可访问，并保留页面HTML的SHA256。重要区别：该证号为河北省地方新闻发布许可证，不属于网信办互联网新闻信息服务许可名录；本站主库其余记录均为网信办许可，两者不可等同。如发现错误，请通过纠错渠道反馈。')
  return ('对应版本原件已核对','本记录的网站名称、登记地址及许可证号已与对应版本原件核对，保留原记录编号。')
 def ev_short(r):
  return ev_meta(r)[0]
@@ -161,6 +164,8 @@ def ev_method_text(r):
   return '图片名单OCR识别与表格重建，条数与名单标注核对'
  if m=='official_attachment_text_extraction':
   return '官方公告附件电子表格文本直接提取，条数已程序校验'
+ if m=='official_site_footer_local_press_permit_verified':
+  return '官网首页页脚实证（地方新闻发布许可证，非网信办许可），页面SHA256留存'
  return '原表页面逐条核对'
 def pagehead(title,desc,kicker='PUBLIC RECORDS',route=''):
  p=root_prefix(route)
@@ -199,6 +204,7 @@ def list_seq(r):
  return d if d.isdigit() else ''
 for r in records:
  route=rec_route(r)
+ is_local=r.get('permit_kind')=='local_press'
  if name_counts[r['name']]==1:
   dtitle=r['name']
  elif dup_key[(r['name'],r['license_number'])]==1:
@@ -214,7 +220,10 @@ for r in records:
  elif is_form:
   detail=pagehead(dtitle,f"{r['region']}{form}服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'SERVICE FORM',route)
  else:
-  detail=pagehead(dtitle,f"{r['region']}网站服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'MEDIA RECORD',route)
+  if is_local:
+   detail=pagehead(dtitle,f"河北地方新闻发布许可证实证补充（非网信办互联网新闻信息服务许可）。核验日期 {r['list_as_of']}，当前许可有效性未单独确认。",'LOCAL PRESS PERMIT',route)
+  else:
+   detail=pagehead(dtitle,f"{r['region']}网站服务记录。对应名单统计截至{r['list_as_of']}，当前许可有效性未单独确认。",'MEDIA RECORD',route)
  # 证据级别必须如实区分：省级为原件页面逐条核对，中央为PDF文本提取+程序校验
  ev_label,ev_text=ev_meta(r)
  if is_ent:
@@ -222,7 +231,7 @@ for r in records:
  elif is_form:
   fields=[('服务名称',r['name']),('服务形式',form),('名单标注单位',r['operator_name'] or '该表未列单位名称'),('许可证编号',r['license_number']),('登记地址',r.get('registered_addresses_raw') or '该表未列服务地址（应用与账号类名单只列名称与单位）'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
  else:
-  fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
+  fields=[('网站服务名称',r['name']),('登记地址原文',r['registered_addresses_raw']),('新闻发布许可证号（地方）' if is_local else '许可证编号',r['license_number']),('许可单位',r['operator_name'] or '该网站表未列许可单位'),('许可服务类型',r['service_type'] or '该网站表未直接列示'),('许可机关',r.get('issuing_authority') or '属地网信办名单'),('所属地区',r['region']),('名单统计截至',r['list_as_of']),('来源发布日期',r['source_published_at'] or '原来源未明确'),('最近核验日期',r['verified_at']),('证据方式',ev_method_text(r)),('记录编号',r['record_id'])]
   if r.get('alt_domains'):fields.append(('实际使用域名','、'.join(r['alt_domains'])))
   if r.get('alt_domains_note'):fields.append(('域名变更说明',r['alt_domains_note']))
  fields_html=''.join(f'<div class="field"><dt>{esc(k)}</dt><dd>{esc(v).replace(chr(10),"<br>")}</dd></div>' for k,v in fields)
@@ -237,6 +246,8 @@ for r in records:
   scope_note=f'本条为{form}类服务项记录：只说明该服务名称在所列统计日期的名单中被登记，名单不提供可核验的服务地址，因此无法做域名或链接层面的核验；也不表示该服务当前仍在运营、或某个同名账号即为名单所指对象。'
  else:
   scope_note='这条记录说明其出现于所列统计日期的名单。不能据此认定当前许可仍有效、站点实时可访问或某个商业发稿渠道获得授权。'
+  if is_local:
+   scope_note='本条为地方新闻发布许可证实证补充：证号「冀新网备132007012」由官网页脚自述，不属于网信办互联网新闻信息服务许可名录；河北 2026 年网信办许可名单收录的当地网站是廊坊传媒网（lfcmw.com，13120180013），并非本站域名。本站主库其余记录均为网信办许可，两者不可等同；本条也不表示当前许可仍有效或获得任何商业发稿授权。'
  detail+=f'''<div class="detail-grid"><section class="panel"><h2>名单登记信息</h2><dl class="fields">{fields_html}</dl></section><aside class="panel"><span class="label">{ev_label}</span><h2>来源与核对说明</h2><p>{ev_text}</p><p>{scope_note}</p>{dup_note}{date_note}<p><a class="source-link" href="{esc(r['source_url'])}" target="_blank" rel="noopener noreferrer">打开原始来源公告</a></p><details class="evidence"><summary>原件核对信息</summary><p>证据编号：{esc(r['evidence_id'])}</p><p>原件SHA256：<code>{esc(r['evidence_sha256'])}</code></p></details><p><a class="text-link" href="../../methods/">查看核验方法</a></p></aside></div><p><a class="text-link" href="../../directory/">返回媒体查询</a></p>'''
  if is_ent:
   schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+' 许可主体名单版本记录','url':DOMAIN+'/'+route,'description':f"互联网新闻信息服务许可主体及许可证号，名单截至{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
@@ -245,9 +256,10 @@ for r in records:
   schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+' '+form+'名单版本记录','url':DOMAIN+'/'+route,'description':f"{form}类互联网新闻信息服务项，名单标注单位与许可证号，名单截至{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
   write(route,dtitle+' '+r['license_number'],f"{r['name']}，{form}类互联网新闻信息服务项，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
  else:
-  schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+' 网站许可名单版本记录','url':DOMAIN+'/'+route,'description':f"网站登记地址及编号，名单截至{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
+  _licword='地方新闻发布许可证（非网信办许可）' if is_local else '许可证号'
+  schema={'@context':'https://schema.org','@type':'WebPage','name':r['name']+(' 地方新闻发布许可证实证记录' if is_local else ' 网站许可名单版本记录'),'url':DOMAIN+'/'+route,'description':f"网站登记地址及{_licword}，核验日期{r['list_as_of']}；当前许可有效性未单独确认。",'dateModified':r['verified_at'],'citation':r['source_url'],'isPartOf':{'@type':'WebSite','name':'中国媒体身份资料库','url':DOMAIN+'/'}}
   _dtitles=' '.join([r['registered_domains'][0]]+list(r.get('alt_domains') or []))
-  write(route,dtitle+' '+_dtitles,f"{r['name']}，登记地址{r['registered_addresses_raw']}，许可证号{r['license_number']}，名单截至{r['list_as_of']}。",detail,'directory',schema)
+  write(route,dtitle+' '+_dtitles,f"{r['name']}，登记地址{r['registered_addresses_raw']}，{_licword}{r['license_number']}，核验日期{r['list_as_of']}。",detail,'directory',schema)
 for i,x in enumerate(coverage,1):
  allrs=[r for r in records if r['region']==x['省份']]
  sites=[r for r in allrs if kind(r)=='website'];ents=[r for r in allrs if kind(r)=='entity'];forms=[r for r in allrs if kind(r)=='service']

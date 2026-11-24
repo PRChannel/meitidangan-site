@@ -118,6 +118,8 @@ def main():
                 "listed_domain": d,
                 "page": page_of(r["record_id"]),
             }
+            if r.get("permit_kind"):
+                rec["permit_kind"] = r["permit_kind"]
             if unlisted:
                 # alt_domains：名单未印、媒体实际使用的域名（经站点标题/跳转核验）。
                 # 资质判定不受影响：该域名是持证媒体的实际运营域名。
@@ -136,6 +138,8 @@ def main():
         recs = entry["records"]
         cats = {c for r in recs for c in r["cats"]}
         entry["qualified"] = True
+        if any(r.get("permit_kind") == "local_press" for r in recs):
+            entry["permit_kind"] = "local_press"
         entry["categories"] = sorted(cats) if cats else ["未载明"]
         entry["editing"] = ("采编发布服务" in cats) if cats else None   # None=该省名单未列类别
         entry["provinces"] = sorted({r["region"] for r in recs})
@@ -181,7 +185,8 @@ def main():
             "note": "仅收录经省级网信办公告原件核对的互联网新闻信息服务许可记录。"
                     "未命中不等于无资质：须结合该省 coverage 等级（full 才可视为该版本内未列入）。"
                     "categories 为'未载明'时，表示该省名单未列服务类别，不代表无采编资质。"
-                    "records 中 unlisted=true 的条目为名单未印但经核验的媒体实际使用域名（如媒体改版换域），资质归属相同。",
+                    "records 中 unlisted=true 的条目为名单未印但经核验的媒体实际使用域名（如媒体改版换域），资质归属相同。"
+                    "特例：河北 lfnews.cn（廊坊新闻网）为官网页脚实证的地方新闻发布许可证，条目与域名均标注 permit_kind=local_press，非网信办互联网新闻信息服务许可，不得与主库其余资质等同。",
         },
         "coverage_legend": {
             "full": "该省最新版公告全部分项已全量提取，可据以判定未列入",
