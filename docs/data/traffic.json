@@ -1232,6 +1232,51 @@
    "verified_at": "2026-11-24",
    "count_in_quote": "1",
    "note": "爱站实测日均IP 12,000、Alexa国内 15977；报价表出现 1 条（后台权重自报最高5）。备案主体：北京五八汽车科技有限公司。"
+  },
+  {
+   "domain": "book118.com",
+   "name": "原创力文档（E书联盟）",
+   "daily_ip": 1980000,
+   "daily_pv": "2970000",
+   "tier": "S",
+   "channel_type": "文档分享平台",
+   "alexa_cn": "47",
+   "icp_org": "四川文动网络科技有限公司",
+   "news_license": "",
+   "data_source": "aizhan_recheck_20261124",
+   "verified_at": "2026-11-24",
+   "count_in_quote": "2",
+   "note": "爱站日均IP198万、国内排名47；报价表挂名\"原创力\"。文档分享平台，无新闻资质，纯流量/收录价值。本次全量重测发现（此前误判爱站无数据）。"
+  },
+  {
+   "domain": "nga.cn",
+   "name": "NGA玩家社区",
+   "daily_ip": 840000,
+   "daily_pv": "2352000",
+   "tier": "S",
+   "channel_type": "垂直社区",
+   "alexa_cn": "96",
+   "icp_org": "北京月神之箭网络科技有限公司",
+   "news_license": "",
+   "data_source": "aizhan_recheck_20261124",
+   "verified_at": "2026-11-24",
+   "count_in_quote": "",
+   "note": "爱站日均IP84万、国内排名96。游戏垂直社区，无新闻资质，纯流量价值。本次全量重测发现。"
+  },
+  {
+   "domain": "yoojia.com",
+   "name": "百度有驾",
+   "daily_ip": 312000,
+   "daily_pv": "717600",
+   "tier": "A",
+   "channel_type": "垂直平台",
+   "alexa_cn": "341",
+   "icp_org": "北京百度网讯科技有限公司",
+   "news_license": "",
+   "data_source": "aizhan_recheck_20261124",
+   "verified_at": "2026-11-24",
+   "count_in_quote": "13",
+   "note": "爱站日均IP31.2万、国内排名341，百度旗下汽车平台。报价表\"百度有驾/易车网（百度有驾）\"13条。无新闻资质，垂直流量价值。本次全量重测发现。"
   }
  ]
 }
