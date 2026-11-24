@@ -741943,6 +741943,36 @@
    "alt_domains_note": "官方名单未单独登记该网站项（江西广播电视台证号 36120190014 在档，登记形式见 CN-JX-202607-ORG-005）。依据：2026-11-24 实测 https://jxgdw.com/ 返回 HTTP 200，站点标题「今视新闻_江西网络广播电视台」，页面印载 互联网新闻信息服务许可证36120170004号 | 网络视听许可证1410592号 ，备案 赣ICP备20230082。站点实证 + 主体证号关联补充，非名单直提。",
    "supplemental": true,
    "supplemental_reason": "官网实证补充（江西广播电视台仅有APP/公众账号登记，官方名单未单独登记此网站项）"
+  },
+  {
+   "record_id": "CN-HEBEI-20261124-WEB-901",
+   "record_kind": "website",
+   "service_form": "网站",
+   "name": "廊坊新闻网",
+   "region": "河北",
+   "license_number": "冀新网备132007012",
+   "entity_nature": null,
+   "service_categories": [],
+   "registered_addresses_raw": "www.lfnews.cn",
+   "registered_domains": [
+    "lfnews.cn"
+   ],
+   "operator_name": "廊坊市易网文化传媒有限公司",
+   "service_type": "地方新闻发布许可网站",
+   "source_url": "https://www.lfnews.cn",
+   "source_published_at": null,
+   "list_as_of": "2026-11-24",
+   "verified_at": "2026-11-24",
+   "evidence_id": "OSITE-HEB-901",
+   "evidence_sha256": "f4795ccf04f854ca6b03fc56ac42f4251bf32ca52c2744ccb1f8ca5b7c629830",
+   "evidence_method": "official_site_footer_local_press_permit_verified",
+   "issuing_authority": "河北省新闻办公室（地方新闻发布许可证，非网信办互联网新闻信息服务许可）",
+   "review_status": "verified_dated_official_record",
+   "current_license_validity": "not_independently_confirmed",
+   "alt_domains_note": "官网首页页脚印载「新闻发布许可证号：冀新网备132007012」「冀ICP备19028039号-2」「廊坊市易网文化传媒有限公司负责制作维护运营」，2026-11-24 实测 HTTPS 返回 200。重要口径说明：该证号为河北省地方新闻发布许可证，不属于网信办互联网新闻信息服务许可名录；河北省 2026 年许可名单收录的是廊坊传媒网 lfcmw.com（13120180013），并未收录 lfnews.cn。本站主库其余记录均为网信办许可，本条为单列标注的地方资质实证补充，不可等同。",
+   "supplemental": true,
+   "supplemental_reason": "官网页脚地方新闻发布许可证实证补充（非网信办许可，单列标注）",
+   "permit_kind": "local_press"
   }
  ],
  "central_records": 221
